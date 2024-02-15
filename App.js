@@ -8,6 +8,7 @@ export default function App() {
       <Text style={styles.text}>Lala wrote this.</Text>
       <Text style={styles.text}>It's been a long time...</Text>
       <Text style={styles.text}>Stavros text...</Text>
+      <Text style={styles.text}>Jacks text...</Text>
       <StatusBar style="auto" />
     </View>
   );
