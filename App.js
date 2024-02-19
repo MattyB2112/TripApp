@@ -1,16 +1,22 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import SignIn from "./pages/SignIn";
+// import TripCard from "./pages/TripCard";
+import TripList from "./pages/TripList";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello everyone!</Text>
-      <Text style={styles.text}>Lala wrote this.</Text>
-      <Text style={styles.text}>It's been a long time...</Text>
-      <Text style={styles.text}>Stavros text...</Text>
-      <Text style={styles.text}>Jacks text...</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Sign in page" component={SignIn} />
+        <Stack.Screen name="Trip list page" component={TripList} />
+        {/* <Stack.Screen name="Trip card page" component={TripCard} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
