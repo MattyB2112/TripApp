@@ -141,8 +141,9 @@ export default function TripCard() {
   }
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        {/* <ScrollView> */}
         {trips.map((trip) => {
           return (
             <Pressable key={trip.name} onPress={() => chooseTrip(trip._id)}>
@@ -151,8 +152,9 @@ export default function TripCard() {
           );
         })}
         {chosenTrip !== null ? <SingleTrip chosenTrip={chosenTrip} /> : null}
-      </ScrollView>
-    </View>
+        {/* </ScrollView> */}
+      </View>
+    </ScrollView>
   );
 }
 
