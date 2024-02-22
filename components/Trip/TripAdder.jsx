@@ -12,9 +12,9 @@ import DatePicker from "@dietime/react-native-date-picker";
 
 export default function TripAdder() {
   const [newTrip, setNewTrip] = useState("");
-  // const [tripName, setTripName] = useState("");
+
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState("");
+  const [endDate, setEndDate] = useState(new Date());
 
   const [showPicker, setShowPicker] = useState(false);
 
@@ -28,19 +28,21 @@ export default function TripAdder() {
     admin: loggedInUser,
   };
 
-  const todaysDate = new Date().toDateString();
   const currentYear = new Date().getFullYear();
+
+  function handlePress() {
+    setNewTrip(newTrip);
+    console.log(newTrip);
+  }
 
   return (
     <ScrollView style={styles.container} behavior="padding">
-      <KeyboardAvoidingView >
+      <KeyboardAvoidingView>
         <View>
           <Text style={styles.inputHeader}>Trip Name</Text>
-          <TextInput
-            style={styles.textInput}
-          />
+          <TextInput style={styles.textInput} />
         </View>
-        {/* DATE PICKER HAPPENING HERE */}
+
         <View>
           <Pressable onPress={setShowPicker}>
             <Text style={styles.inputHeader}> Set Start Date</Text>
@@ -56,12 +58,12 @@ export default function TripAdder() {
               fontSize={15}
             />
           )}
-          <Pressable>
+          {/* <Pressable>
             {" "}
             <Text>Confirm</Text>{" "}
-          </Pressable>
+          </Pressable> */}
         </View>
-        {/* DATE PICKER HAPPENING HERE */}
+
         <View>
           <Pressable onPress={setShowPicker}>
             <Text style={styles.inputHeader}> Set End Date</Text>
@@ -77,13 +79,13 @@ export default function TripAdder() {
               fontSize={15}
             />
           )}
-          <Pressable>
+          {/* <Pressable>
             {" "}
             <Text>Confirm</Text>{" "}
-          </Pressable>
+          </Pressable> */}
         </View>
         <View>
-          <Pressable>
+          <Pressable onPress={handlePress}>
             {" "}
             <Text>Create Trip</Text>{" "}
           </Pressable>
