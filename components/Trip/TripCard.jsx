@@ -4,7 +4,10 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 export default function TripCard() {
   const trips = [
     {
+      _id: "65d61e7acbe57211996b86c3",
       name: "Paris",
+      startdate: " 2024-02-21T16:01:59.657+00:00",
+      enddate: "2024-02-21T16:01:59.657+00:00",
       admin: "Justyna",
       travel: [
         {
@@ -19,10 +22,17 @@ export default function TripCard() {
       stay: [
         {
           startdate: "date",
-          endate: "date",
+          enddate: "date",
           name: "hotel coder",
           type: "hotel",
           info: "address",
+        },
+        {
+          startdate: "10th May",
+          enddate: "15th May",
+          name: "hotel helloworld",
+          type: "hotel",
+          info: "123 hello street",
         },
       ],
       members: [
@@ -37,10 +47,19 @@ export default function TripCard() {
           email: "justyna@justyna.com",
         },
       ],
-      activities: [{ startdate: "date", name: "museum", info: "town square" }],
+      activities: [
+        {
+          startdate: "date",
+          name: "museum",
+          info: "town square",
+        },
+      ],
     },
     {
+      _id: "65d61e7acbe57211996b86c4",
       name: "Malta",
+      startdate: "2024-02-21T16:01:59.657+00:00",
+      enddate: "2024-02-21T16:01:59.657+00:00",
       admin: "Stavros",
       members: [
         {
@@ -49,9 +68,15 @@ export default function TripCard() {
           email: "stavros@stavros.com",
         },
       ],
+      travel: [],
+      stay: [],
+      activities: [],
     },
     {
+      _id: "65d61e7acbe57211996b86c5",
       name: "Group trip",
+      startdate: "2024-02-21T16:01:59.657+00:00",
+      enddate: "2024-02-21T16:01:59.657+00:00",
       admin: "Jack",
       travel: [
         {
@@ -66,7 +91,7 @@ export default function TripCard() {
       stay: [
         {
           startdate: "date",
-          endate: "date",
+          enddate: "date",
           name: "hotel coder",
           type: "hotel",
           info: "address",
@@ -106,19 +131,15 @@ export default function TripCard() {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View>
-          {trips.map((trip) => {
-            return (
-              <View>
-                <Pressable>
-                  <Text style={[styles.item, styles.titleText]} key={trip.name}>
-                    {trip.name}
-                  </Text>
-                  </Pressable>
-              </View>
-            );
-          })}
-        </View>
+        {trips.map((trip) => {
+          return (
+            <View>
+              <Pressable key={trip.name}>
+                <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
+              </Pressable>
+            </View>
+          );
+        })}
       </ScrollView>
     </View>
   );
