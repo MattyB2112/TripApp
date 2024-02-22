@@ -6,7 +6,7 @@ export default function Header() {
     <View style={styles.container}>
       <Text style={styles.titleText}>TripApp</Text>
       <Pressable style={styles.tripsButton}>
-        <Text>MY TRIPS</Text>
+        <Text style={styles.tripsButton}>MY TRIPS</Text>
       </Pressable>
     </View>
   );
@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontFamily: "sans-serif",
     marginRight: 10,
-    marginTop: -20,
+    marginTop: -10,
   },
 });
