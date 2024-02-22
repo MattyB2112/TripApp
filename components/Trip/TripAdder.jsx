@@ -1,14 +1,112 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   View,
-  TextInput,
   Text,
   StyleSheet,
-  ViewStyle,
-  TextStyle,
-  TextInputProps,
+  TextInput,
+  KeyboardAvoidingView,
+  ScrollView,
+  Pressable,
 } from "react-native";
+import DatePicker from "@dietime/react-native-date-picker";
 
-export default function TripAdder(){
+export default function TripAdder() {
+  const [newTrip, setNewTrip] = useState("");
+  // const [tripName, setTripName] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState("");
 
+  const [showPicker, setShowPicker] = useState(false);
+
+  const loggedInUser = "Jenny";
+
+  const tripToAdd = {
+    _id: "8549495e9434352fg234",
+    name: "Bogota",
+    startdate: "2024-04-26T12:30:59.657+00:00",
+    enddate: "2024-05-27T21:00:59.657+00:00",
+    admin: loggedInUser,
+  };
+
+  const todaysDate = new Date().toDateString();
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <ScrollView style={styles.container} behavior="padding">
+      <KeyboardAvoidingView >
+        <View>
+          <Text style={styles.inputHeader}>Trip Name</Text>
+          <TextInput
+            style={styles.textInput}
+          />
+        </View>
+        {/* DATE PICKER HAPPENING HERE */}
+        <View>
+          <Pressable onPress={setShowPicker}>
+            <Text style={styles.inputHeader}> Set Start Date</Text>
+          </Pressable>
+
+          {showPicker && (
+            <DatePicker
+              value={startDate}
+              onChange={(value) => setStartDate(value)}
+              format="dd-mm-yyyy"
+              startYear={currentYear}
+              endYear={currentYear + 50}
+              fontSize={15}
+            />
+          )}
+          <Pressable>
+            {" "}
+            <Text>Confirm</Text>{" "}
+          </Pressable>
+        </View>
+        {/* DATE PICKER HAPPENING HERE */}
+        <View>
+          <Pressable onPress={setShowPicker}>
+            <Text style={styles.inputHeader}> Set End Date</Text>
+          </Pressable>
+
+          {showPicker && (
+            <DatePicker
+              value={endDate}
+              onChange={(value) => setEndDate(value)}
+              format="dd-mm-yyyy"
+              startYear={currentYear}
+              endYear={currentYear + 50}
+              fontSize={15}
+            />
+          )}
+          <Pressable>
+            {" "}
+            <Text>Confirm</Text>{" "}
+          </Pressable>
+        </View>
+        <View>
+          <Pressable>
+            {" "}
+            <Text>Create Trip</Text>{" "}
+          </Pressable>
+        </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  inputHeader: {
+    fontWeight: "bold",
+  },
+  container: {
+    flex: 1,
+    padding: 50,
+    backgroundColor: "#D7CCB2",
+  },
+  textInput: {
+    backgroundColor: "#D7CCB2",
+    color: "black",
+    borderColor: "#423219",
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+});
