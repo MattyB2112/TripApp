@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import SingleTrip from "./SingleTrip";
 
 export default function TripCard() {
+  const [chosenTrip, setChosenTrip] = useState(null);
   const trips = [
     {
       _id: "65d61e7acbe57211996b86c3",
       name: "Paris",
-      startdate: " 2024-02-21T16:01:59.657+00:00",
+      startdate: "2024-02-21T16:01:59.657+00:00",
       enddate: "2024-02-21T16:01:59.657+00:00",
       admin: "Justyna",
       travel: [
@@ -128,18 +130,27 @@ export default function TripCard() {
     },
   ];
 
+  console.log("hi");
+
+  function chooseTrip(id) {
+    console.log("pressed button");
+    const trip = trips.filter((trip) => {
+      return trip._id === id;
+    });
+    setChosenTrip(trip);
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
         {trips.map((trip) => {
           return (
-            <View>
-              <Pressable key={trip.name}>
-                <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
-              </Pressable>
-            </View>
+            <Pressable key={trip.name} onPress={() => chooseTrip(trip._id)}>
+              <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
+            </Pressable>
           );
         })}
+        {chosenTrip !== null ? <SingleTrip chosenTrip={chosenTrip} /> : null}
       </ScrollView>
     </View>
   );

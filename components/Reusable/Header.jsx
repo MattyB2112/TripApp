@@ -5,7 +5,9 @@ export default function Header() {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>TripApp</Text>
-      <Pressable style={styles.tripsButton}>MY TRIPS</Pressable>
+      <Pressable style={styles.tripsButton}>
+        <Text>MY TRIPS</Text>
+      </Pressable>
     </View>
   );
 }

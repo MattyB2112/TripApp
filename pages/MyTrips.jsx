@@ -4,7 +4,6 @@ import TripCard from "../components/Trip/TripCard";
 export default function MyTrips({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.titleText}>MY TRIPS</Text>
       <TripCard />
       <Pressable onPress={() => navigation.navigate("Sign in")}>
         <Text style={styles.signIn}>← Sign In</Text>
@@ -35,6 +34,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#096502",
     textAlign: "center",
-    marginTop: 20
+    marginTop: 20,
   },
 });
