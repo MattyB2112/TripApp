@@ -142,7 +142,7 @@ export default function TripCard({ navigation }) {
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {/* <ScrollView> */}
         {trips.map((trip) => {

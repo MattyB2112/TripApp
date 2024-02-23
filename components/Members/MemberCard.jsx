@@ -9,11 +9,13 @@ export default function MemberCard({ chosenTrip }) {
         return (
           <View key={memberItem.username} style={styles.item}>
             <Text>{memberItem.username}</Text>
-            <View style={styles.buttonContainer}>
-              <Pressable style={styles.button}>
-                <Text>Delete</Text>
-              </Pressable>
-            </View>
+            {chosenTrip[0].admin !== memberItem.username ? (
+              <View style={styles.buttonContainer}>
+                <Pressable style={styles.button}>
+                  <Text>Delete</Text>
+                </Pressable>
+              </View>
+            ) : null}
           </View>
         );
       })}

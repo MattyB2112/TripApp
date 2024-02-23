@@ -166,8 +166,8 @@ export default function SingleTrip({ route }) {
     );
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+      <View>
         <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
         <TripNavBar setNavTab={setNavTab} />
         {navTab === "Travel" ? <TravelCard chosenTrip={chosenTrip} /> : null}
@@ -178,10 +178,6 @@ export default function SingleTrip({ route }) {
         {navTab === "Members" ? <MemberCard chosenTrip={chosenTrip} /> : null}
       </View>
     </ScrollView>
-    // <View>
-    //   <Text>Single Trip here</Text>
-    //   <Text>{trip_id}</Text>
-    // </View>
   );
 }
 
