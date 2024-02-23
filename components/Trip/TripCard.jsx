@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import SingleTrip from "./SingleTrip";
 
-export default function TripCard() {
+export default function TripCard({ navigation }) {
   const [chosenTrip, setChosenTrip] = useState(null);
   const trips = [
     {
@@ -138,10 +138,11 @@ export default function TripCard() {
       return trip._id === id;
     });
     setChosenTrip(trip);
+    navigation.navigate("Single Trip", { trip_id: id });
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <View style={styles.container}>
         {/* <ScrollView> */}
         {trips.map((trip) => {
@@ -151,7 +152,7 @@ export default function TripCard() {
             </Pressable>
           );
         })}
-        {chosenTrip !== null ? <SingleTrip chosenTrip={chosenTrip} /> : null}
+        {/* {chosenTrip !== null ? <SingleTrip chosenTrip={chosenTrip} /> : null} */}
         {/* </ScrollView> */}
       </View>
     </ScrollView>

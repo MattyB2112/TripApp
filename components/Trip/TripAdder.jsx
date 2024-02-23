@@ -86,8 +86,7 @@ export default function TripAdder() {
         </View>
         <View>
           <Pressable onPress={handlePress}>
-            {" "}
-            <Text>Create Trip</Text>{" "}
+            <Text>Create Trip</Text>
           </Pressable>
         </View>
       </KeyboardAvoidingView>

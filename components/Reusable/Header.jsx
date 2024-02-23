@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 
-export default function Header() {
+export default function Header({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>TripApp</Text>
-      <Pressable style={styles.tripsButton}>
+      <Pressable
+        style={styles.tripsButton}
+        // onPress={() => navigation.navigate("My Trips")}
+      >
         <Text style={styles.tripsButton}>MY TRIPS</Text>
       </Pressable>
     </View>

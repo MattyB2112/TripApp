@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 
 export default function MemberCard({ chosenTrip }) {
   return (
@@ -7,8 +7,13 @@ export default function MemberCard({ chosenTrip }) {
       <Text>Admin: {chosenTrip[0].admin}</Text>
       {chosenTrip[0].members.map((memberItem) => {
         return (
-          <View style={styles.item}>
+          <View key={memberItem.username} style={styles.item}>
             <Text>{memberItem.username}</Text>
+            <View style={styles.buttonContainer}>
+              <Pressable style={styles.button}>
+                <Text>Delete</Text>
+              </Pressable>
+            </View>
           </View>
         );
       })}
@@ -28,5 +33,18 @@ const styles = StyleSheet.create({
     borderColor: "#423219",
     borderWidth: 2,
     borderRadius: 5,
+  },
+  buttonContainer: {
+    marginTop: 5,
+    flex: 1,
+    gap: 30,
+    flexDirection: "row",
+    justifyContent: "flex-end",
+  },
+  button: {
+    borderColor: "#423219",
+    borderWidth: 2,
+    borderRadius: 5,
+    padding: 5,
   },
 });
