@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   item: {
+    alignContent: "center",
     padding: 20,
     fontSize: 15,
     marginTop: 5,

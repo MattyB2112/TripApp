@@ -35,8 +35,8 @@ export default function SingleTrip({ route }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <View>
-        <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
         <TripNavBar setNavTab={setNavTab} />
+        <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
         {navTab === "Travel" ? <TravelCard chosenTrip={chosenTrip} /> : null}
         {navTab === "Stay" ? <StayCard chosenTrip={chosenTrip} /> : null}
         {navTab === "Activities" ? (
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 50,
+    paddingTop: 10,
     backgroundColor: "#D7CCB2",
   },
   item: {
