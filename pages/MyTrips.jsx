@@ -4,7 +4,7 @@ import TripCard from "../components/Trip/TripCard";
 export default function MyTrips({ navigation }) {
   return (
     <View style={styles.container}>
-      <TripCard />
+      <TripCard navigation={navigation} />
       <Pressable onPress={() => navigation.navigate("Sign in")}>
         <Text style={styles.signIn}>← Sign In</Text>
       </Pressable>
