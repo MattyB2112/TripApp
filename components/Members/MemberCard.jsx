@@ -1,6 +1,10 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function MemberCard({ chosenTrip }) {
+  const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
   return (
     <View style={styles.container}>
       <Text>Members</Text>
@@ -9,7 +13,8 @@ export default function MemberCard({ chosenTrip }) {
         return (
           <View key={memberItem.username} style={styles.item}>
             <Text>{memberItem.username}</Text>
-            {chosenTrip.admin !== memberItem.username ? (
+            {signedInUser.username === chosenTrip.admin &&
+            chosenTrip.admin !== memberItem.username ? (
               <View style={styles.buttonContainer}>
                 <Pressable style={styles.button}>
                   <Text>Delete</Text>

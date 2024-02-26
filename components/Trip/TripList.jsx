@@ -33,15 +33,24 @@ export default function TripList({ navigation }) {
     navigation.navigate("Single Trip", { trip_id: id });
   }
 
+  function deleteTrip(id) {
+    console.log(id, "trip id");
+  }
+
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {/* <ScrollView> */}
         {trips.map((trip) => {
           return (
-            <Pressable key={trip.name} onPress={() => chooseTrip(trip._id)}>
-              <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
-            </Pressable>
+            <View key={trip._id} style={styles.tripItemContainer}>
+              <Pressable onPress={() => chooseTrip(trip._id)}>
+                <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
+              </Pressable>
+              <Pressable onPress={() => deleteTrip(trip._id)}>
+                <Text style={[styles.item, styles.titleText]}>Delete</Text>
+              </Pressable>
+            </View>
           );
         })}
         {/* </ScrollView> */}
@@ -73,5 +82,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "black",
+  },
+  tripItemContainer: {
+    flex: 1,
+    flexDirection: "row",
+    gap: 10,
   },
 });
