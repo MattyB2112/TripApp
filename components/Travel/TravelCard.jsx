@@ -5,9 +5,9 @@ export default function TravelCard({ chosenTrip }) {
   return (
     <View style={styles.container}>
       <Text>Travel</Text>
-      {chosenTrip[0].travel.map((travelItem) => {
+      {chosenTrip.travel.map((travelItem) => {
         return (
-          <View key={travelItem.startdate} style={styles.item}>
+          <View key={travelItem._id} style={styles.item}>
             <Text>Start date: {travelItem.startdate}</Text>
             <Text>Leave time: {travelItem.leavetime}</Text>
             <Text>Arrive date: {travelItem.arrivedate}</Text>

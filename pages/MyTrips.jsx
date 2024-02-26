@@ -1,10 +1,10 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import TripCard from "../components/Trip/TripCard";
+import TripList from "../components/Trip/TripList";
 
 export default function MyTrips({ navigation }) {
   return (
     <View style={styles.container}>
-      <TripCard navigation={navigation} />
+      <TripList navigation={navigation} />
       <Pressable onPress={() => navigation.navigate("Sign in")}>
         <Text style={styles.signIn}>← Sign In</Text>
       </Pressable>

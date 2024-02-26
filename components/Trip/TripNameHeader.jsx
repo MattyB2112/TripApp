@@ -1,10 +1,11 @@
 import { Text } from "react-native";
 
 export default function TripNameHeader({ formatDate, chosenTrip }) {
+  console.log(chosenTrip);
   return (
     <Text>
-      {chosenTrip[0].name} {formatDate(chosenTrip[0].startdate)}-
-      {formatDate(chosenTrip[0].enddate)}
+      {chosenTrip.name} {formatDate(chosenTrip.startdate)}-
+      {formatDate(chosenTrip.enddate)}
     </Text>
   );
 }

@@ -4,12 +4,12 @@ export default function MemberCard({ chosenTrip }) {
   return (
     <View style={styles.container}>
       <Text>Members</Text>
-      <Text>Admin: {chosenTrip[0].admin}</Text>
-      {chosenTrip[0].members.map((memberItem) => {
+      <Text>Admin: {chosenTrip.admin}</Text>
+      {chosenTrip.members.map((memberItem) => {
         return (
           <View key={memberItem.username} style={styles.item}>
             <Text>{memberItem.username}</Text>
-            {chosenTrip[0].admin !== memberItem.username ? (
+            {chosenTrip.admin !== memberItem.username ? (
               <View style={styles.buttonContainer}>
                 <Pressable style={styles.button}>
                   <Text>Delete</Text>

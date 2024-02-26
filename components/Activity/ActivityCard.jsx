@@ -1,13 +1,12 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
 export default function ActivityCard({ chosenTrip }) {
-  console.log(chosenTrip[0].activities);
   return (
     <View style={styles.container}>
       <Text>Activities</Text>
-      {chosenTrip[0].activities.map((activityItem) => {
+      {chosenTrip.activities.map((activityItem) => {
         return (
-          <View key={activityItem.name} style={styles.item}>
+          <View key={activityItem._id} style={styles.item}>
             <Text>{activityItem.name}</Text>
             <Text>{activityItem.startdate}</Text>
             <Text>{activityItem.info}</Text>

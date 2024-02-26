@@ -1,5 +1,5 @@
 import { View } from "react-native";
-// import LoginForm from "../components/SignIn/LoginForm";
+import LoginForm from "../components/SignIn/LoginForm";
 import TripAdder from "../components/Trip/TripAdder";
 
 export default function Welcome() {

@@ -4,9 +4,9 @@ export default function StayCard({ chosenTrip }) {
   return (
     <View style={styles.container}>
       <Text>Stay</Text>
-      {chosenTrip[0].stay.map((stayItem) => {
+      {chosenTrip.stay.map((stayItem) => {
         return (
-          <View key={stayItem.startdate} style={styles.item}>
+          <View key={stayItem._id} style={styles.item}>
             <Text>Start date: {stayItem.startdate}</Text>
             <Text>End time: {stayItem.enddate}</Text>
             <Text>Type: {stayItem.type}</Text>
