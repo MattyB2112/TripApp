@@ -5,12 +5,6 @@ export default function Header({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>TripApp</Text>
-      <Pressable
-        style={styles.tripsButton}
-        // onPress={() => navigation.navigate("My Trips")}
-      >
-        <Text style={styles.tripsButton}>MY TRIPS</Text>
-      </Pressable>
     </View>
   );
 }
@@ -23,7 +17,7 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 40,
     fontWeight: "bold",
-    color: "black",
+    color: "white",
   },
   tripsButton: {
     color: "#B2CCE4",
