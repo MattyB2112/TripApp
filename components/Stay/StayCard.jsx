@@ -1,6 +1,12 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { deleteStay } from "../../api";
 
-export default function StayCard({ chosenTrip }) {
+export default function StayCard({ chosenTrip, setModifyTrip }) {
+  function handleStayDelete(trip_id, stay_id) {
+    deleteStay(trip_id, stay_id).then((response) => {
+      setModifyTrip(true);
+    });
+  }
   return (
     <View style={styles.container}>
       <Text>Stay</Text>
@@ -15,7 +21,10 @@ export default function StayCard({ chosenTrip }) {
               <Pressable style={styles.button}>
                 <Text>Edit</Text>
               </Pressable>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => handleStayDelete(chosenTrip._id, stayItem._id)}
+              >
                 <Text>Delete</Text>
               </Pressable>
             </View>

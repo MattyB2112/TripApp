@@ -8,6 +8,7 @@ import { getTrips } from "../../api";
 export default function TripList({ navigation }) {
   const [trips, setTrips] = useState([]);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
   console.log(signedInUser);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function TripList({ navigation }) {
         });
       });
       setTrips(signedInUserTrips);
+      setIsLoading(false);
     });
   }, []);
 
@@ -35,6 +37,14 @@ export default function TripList({ navigation }) {
 
   function deleteTrip(id) {
     console.log(id, "trip id");
+  }
+
+  if (isLoading) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (

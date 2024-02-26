@@ -1,7 +1,16 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { deleteTravel } from "../../api";
 
-export default function TravelCard({ chosenTrip }) {
+export default function TravelCard({ chosenTrip, setModifyTrip }) {
   console.log(chosenTrip);
+  function handleTravelDelete(trip_id, travel_id) {
+    console.log(trip_id);
+    console.log(travel_id);
+    deleteTravel(trip_id, travel_id).then((response) => {
+      setModifyTrip(true);
+    });
+  }
+
   return (
     <View style={styles.container}>
       <Text>Travel</Text>
@@ -18,7 +27,12 @@ export default function TravelCard({ chosenTrip }) {
               <Pressable style={styles.button}>
                 <Text>Edit</Text>
               </Pressable>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => {
+                  handleTravelDelete(chosenTrip._id, travelItem._id);
+                }}
+              >
                 <Text>Delete</Text>
               </Pressable>
             </View>

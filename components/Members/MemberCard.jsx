@@ -1,10 +1,17 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { deleteMember } from "../../api";
 
 export default function MemberCard({ chosenTrip }) {
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
+
+  function handleMemberDelete(trip_id, member_username) {
+    deleteMember(trip_id, member_username).then((response) => {
+      setModify(true);
+    });
+  }
   return (
     <View style={styles.container}>
       <Text>Members</Text>
@@ -16,7 +23,14 @@ export default function MemberCard({ chosenTrip }) {
             {signedInUser.username === chosenTrip.admin &&
             chosenTrip.admin !== memberItem.username ? (
               <View style={styles.buttonContainer}>
-                <Pressable style={styles.button}>
+                <Pressable
+                  style={styles.button}
+                  onPress={() =>
+                    handleMemberDelete(chosenTrip._id, {
+                      username: memberItem.username,
+                    })
+                  }
+                >
                   <Text>Delete</Text>
                 </Pressable>
               </View>

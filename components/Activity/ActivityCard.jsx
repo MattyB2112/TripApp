@@ -1,6 +1,13 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { deleteActivity } from "../../api";
 
-export default function ActivityCard({ chosenTrip }) {
+export default function ActivityCard({ chosenTrip, setModifyTrip }) {
+  function handleActivityDelete(trip_id, activity_id) {
+    console.log(trip_id, activity_id);
+    deleteActivity(trip_id, activity_id).then((response) => {
+      setModifyTrip(true);
+    });
+  }
   return (
     <View style={styles.container}>
       <Text>Activities</Text>
@@ -14,7 +21,12 @@ export default function ActivityCard({ chosenTrip }) {
               <Pressable style={styles.button}>
                 <Text>Edit</Text>
               </Pressable>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() =>
+                  handleActivityDelete(chosenTrip._id, activityItem._id)
+                }
+              >
                 <Text>Delete</Text>
               </Pressable>
             </View>
