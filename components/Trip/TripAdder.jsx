@@ -50,6 +50,7 @@ export default function TripAdder() {
     setEndPicker(false);
     const dateStr = new Date(date).toISOString();
     setEndDate(dateStr);
+    setNewTrip(tripToAdd);
   }
 
   function formatDate(date) {
@@ -63,11 +64,8 @@ export default function TripAdder() {
     admin: signedInUser.username,
   };
 
-
-
   function handleCreateTrip() {
-    setNewTrip(tripToAdd);
-//not working yet
+    //not working yet
     postTrip(newTrip, signedInUser).then((response) => {
       console.log("AFTER POST REQUEST", response);
     });
@@ -134,9 +132,7 @@ export default function TripAdder() {
           >
             <Text style={styles.createTripText}>CREATE TRIP!</Text>
           </Pressable>
-        ) : (
-          ""
-        )}
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );
