@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import {
   View,
   Text,
@@ -9,6 +10,7 @@ import {
   Pressable,
 } from "react-native";
 import DatePicker from "@dietime/react-native-date-picker";
+import { postTrip } from "../../api";
 
 export default function TripAdder() {
   const [tripName, setTripName] = useState("");
@@ -22,7 +24,8 @@ export default function TripAdder() {
 
   const [newTrip, setNewTrip] = useState("");
 
-  const loggedInUser = "Jenny";
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+
   const currentYear = new Date().getFullYear();
 
   function handleTripNameInput(text) {
@@ -57,12 +60,22 @@ export default function TripAdder() {
     name: tripName,
     startdate: startDate,
     enddate: endDate,
-    admin: loggedInUser,
+    admin: signedInUser.username,
   };
+
+
+
+  function handleCreateTrip() {
+    setNewTrip(tripToAdd);
+//not working yet
+    postTrip(newTrip, signedInUser).then((response) => {
+      console.log("AFTER POST REQUEST", response);
+    });
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* Trip Name Input */}
         <Text>TRIP NAME:</Text>
         <TextInput
@@ -117,7 +130,7 @@ export default function TripAdder() {
         {startDate && endDate ? (
           <Pressable
             style={styles.createTripBtn}
-            onPress={() => setNewTrip(tripToAdd)}
+            onPress={() => handleCreateTrip()}
           >
             <Text style={styles.createTripText}>CREATE TRIP!</Text>
           </Pressable>
