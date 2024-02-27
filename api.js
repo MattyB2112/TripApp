@@ -1,31 +1,52 @@
 import axios from "axios";
 
 export const getTrips = () => {
-  return axios.get("https://tripappbe.onrender.com/trips").then((response) => {
-    return response.data.trips;
-  });
+    return axios.get("https://tripappbe.onrender.com/trips").then((response) => {
+        return response.data.trips;
+    });
 };
 
 export const getTripById = (trip_id) => {
-  return axios
-    .get(`https://tripappbe.onrender.com/trips/${trip_id}`)
-    .then((response) => {
-      console.log("getting trip by ID");
-      return response.data.trip;
-    });
+    return axios
+        .get(`https://tripappbe.onrender.com/trips/${trip_id}`)
+        .then((response) => {
+            return response.data.trip;
+        });
 };
 
-export const postTrip = (newTrip, signedInUser) => {
-  const newTripObj = { newTrip, signedInUser };
-  console.log(newTripObj);
+export const deleteTrip = (trip_id) => {
+    return axios
+        .delete(`https://tripappbe.onrender.com/trips/${trip_id}`)
+        .then((response) => { });
+};
 
-  //not working yet
-  return axios
-    .post("https://tripappbe.onrender.com/trips/", newTripObj)
-    .then((response) => {
-      console.log(response);
+
+export const deleteTravel = (trip_id, travel_id) => {
+    return axios.delete(
+        `https://tripappbe.onrender.com/trips/${trip_id}/travel/${travel_id}`)
+        .then((response) => {
+            return response
+        })
+}
+
+export const deleteStay = (trip_id, stay_id) => {
+    return axios.delete(
+        `https://tripappbe.onrender.com/trips/${trip_id}/stay/${stay_id}`
+    ).then((response) => {
+        return response
     })
-    .catch((error) => {
-      console.log(error);
-    });
-};
+}
+
+export const deleteActivity = (trip_id, activity_id) => {
+    return axios.delete(`https://tripappbe.onrender.com/trips/${trip_id}/activities/${activity_id}`)
+        .then((response) => {
+            return response
+        })
+}
+
+export const deleteMember = (trip_id, member_username) => {
+    return axios.delete(`https://tripappbe.onrender.com/trips/${trip_id}/members`, { data: member_username })
+        .then((response) => {
+            return response
+        })
+}

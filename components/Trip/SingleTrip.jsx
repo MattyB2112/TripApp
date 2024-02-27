@@ -13,6 +13,7 @@ export default function SingleTrip({ route }) {
   const [navTab, setNavTab] = useState("Travel");
   const [chosenTrip, setChosenTrip] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [modifyTrip, setModifyTrip] = useState(false);
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -22,8 +23,9 @@ export default function SingleTrip({ route }) {
     getTripById(trip_id).then((data) => {
       setIsLoading(false);
       setChosenTrip(data);
+      setModifyTrip(false);
     });
-  }, []);
+  }, [modifyTrip]);
 
   if (isLoading)
     return (
@@ -35,14 +37,20 @@ export default function SingleTrip({ route }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
       <View>
-        <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
         <TripNavBar setNavTab={setNavTab} />
-        {navTab === "Travel" ? <TravelCard chosenTrip={chosenTrip} /> : null}
-        {navTab === "Stay" ? <StayCard chosenTrip={chosenTrip} /> : null}
-        {navTab === "Activities" ? (
-          <ActivityCard chosenTrip={chosenTrip} />
+        <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
+        {navTab === "Travel" ? (
+          <TravelCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
-        {navTab === "Members" ? <MemberCard chosenTrip={chosenTrip} /> : null}
+        {navTab === "Stay" ? (
+          <StayCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Activities" ? (
+          <ActivityCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Members" ? (
+          <MemberCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
       </View>
     </ScrollView>
   );
@@ -52,6 +60,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 50,
+    paddingTop: 10,
     backgroundColor: "#D7CCB2",
   },
   item: {
