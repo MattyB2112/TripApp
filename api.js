@@ -21,3 +21,22 @@ export const postTravel = (trip_id, newTravel) => {
       return travelData;
     });
 };
+
+export const postStay = (trip_id, newStay) => {
+  return axios
+    .post(`https://tripappbe.onrender.com/trips/${trip_id}/stay`, newStay)
+    .then((stayData) => {
+      return stayData;
+    });
+};
+
+export const postActivity = (trip_id, newActivity) => {
+  return axios
+    .post(
+      `https://tripappbe.onrender.com/trips/${trip_id}/activities`,
+      newActivity
+    )
+    .then((activityData) => {
+      return activityData;
+    });
+};

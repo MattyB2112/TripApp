@@ -155,20 +155,6 @@ const styles = StyleSheet.create({
     width: "80%",
     alignSelf: "center",
   },
-  setDateBtn: {
-    alignSelf: "center",
-    alignItems: "center",
-    width: "30%",
-    borderColor: "#423219",
-    borderWidth: 2,
-    borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
-  },
-  setDateText: {
-    fontWeight: "bold",
-    fontSize: 10,
-  },
   addTravelBtn: {
     backgroundColor: "#423219",
     alignSelf: "center",

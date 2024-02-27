@@ -9,6 +9,8 @@ import TripNavBar from "./TripNavBar";
 import { getTripById } from "../../api.js";
 import TripAdder from "./TripAdder";
 import TravelAdder from "../Travel/TravelAdder";
+import StayAdder from "../Stay/StayAdder.jsx";
+import ActivityAdder from "../Activity/ActivityAdder.jsx";
 
 export default function SingleTrip({ route }) {
   const { trip_id } = route.params;
@@ -53,6 +55,24 @@ export default function SingleTrip({ route }) {
           chosenTrip={chosenTrip}
           setModifyTrip={setModifyTrip}
         ></TravelAdder>
+      ) : null}
+      {navTab === "Stay" ? (
+        <StayAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></StayAdder>
+      ) : null}
+      {navTab === "Activities" ? (
+        <ActivityAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></ActivityAdder>
+      ) : null}
+      {navTab === "Members" ? (
+        <MemberAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></MemberAdder>
       ) : null}
     </ScrollView>
   );
