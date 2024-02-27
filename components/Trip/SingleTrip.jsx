@@ -15,6 +15,7 @@ export default function SingleTrip({ route }) {
   const [navTab, setNavTab] = useState("Travel");
   const [chosenTrip, setChosenTrip] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [modifyTrip, setModifyTrip] = useState(false);
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -24,8 +25,9 @@ export default function SingleTrip({ route }) {
     getTripById(trip_id).then((data) => {
       setIsLoading(false);
       setChosenTrip(data);
+      setModifyTrip(false);
     });
-  }, []);
+  }, [modifyTrip]);
 
   if (isLoading)
     return (
@@ -47,7 +49,10 @@ export default function SingleTrip({ route }) {
         {navTab === "Members" ? <MemberCard chosenTrip={chosenTrip} /> : null}
       </View>
       {navTab === "Travel" ? (
-        <TravelAdder chosenTrip={chosenTrip}></TravelAdder>
+        <TravelAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></TravelAdder>
       ) : null}
     </ScrollView>
   );

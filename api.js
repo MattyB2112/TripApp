@@ -14,34 +14,10 @@ export const getTripById = (trip_id) => {
     });
 };
 
-export const postTravel = (
-  trip_id,
-  startDate,
-  leaveTime,
-  arriveDate,
-  arriveTime,
-  travelType,
-  info
-) => {
-  const travelToAdd = {
-    startdate: startDate,
-    leavetime: leaveTime,
-    arrivedata: arriveDate,
-    arrivetime: arriveTime,
-    type: travelType,
-    info: info,
-  };
-  console.log(travelToAdd, "<---- travel to ADD");
-  console.log(trip_id, "<--- trip id api");
+export const postTravel = (trip_id, newTravel) => {
   return axios
-    .post(`https://tripappbe.onrender.com/trips/${trip_id}/travel`, travelToAdd)
+    .post(`https://tripappbe.onrender.com/trips/${trip_id}/travel`, newTravel)
     .then((travelData) => {
-      console.log("GREEN LIGHT");
-      console.log(travelData, "<---- TRAVEL DATA API");
-      return travelData.data;
-    })
-    .catch((error) => {
-      console.log("hello");
-      console.log(error);
+      return travelData;
     });
 };

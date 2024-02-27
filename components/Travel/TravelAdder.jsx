@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { postTravel } from "../../api.js";
 
-export default function TravelAdder({ chosenTrip }) {
+export default function TravelAdder({ chosenTrip, setModifyTrip }) {
   const [showForm, setShowForm] = useState(false);
   const [showAddBtn, setShowAddBtn] = useState(true);
 
@@ -72,32 +72,8 @@ export default function TravelAdder({ chosenTrip }) {
   }
 
   function handleSubmitTravel() {
-    const { startdate, leavetime, arrivedate, arrivetime, type, info } =
-      newTravel;
-
-    console.log(chosenTrip, "<---- TRIP");
-    console.log(newTravel, "<--- NEW TRAVEL TO ADD");
-
-    postTravel(
-      chosenTrip._id,
-      startdate,
-      leavetime,
-      arrivedate,
-      arrivetime,
-      type,
-      info
-    ).then(() => {
-      setNewTravel((currentTravel) => {
-        return {
-          ...currentTravel,
-          startdate: currentTravel.startDate,
-          leavetime: currentTravel.leaveTime,
-          arrivedata: currentTravel.arriveDate,
-          arrivetime: currentTravel.arriveTime,
-          type: currentTravel.type,
-          info: currentTravel.info,
-        };
-      });
+    postTravel(chosenTrip._id, newTravel).then(() => {
+      setModifyTrip(true);
     });
 
     setShowForm(false);
