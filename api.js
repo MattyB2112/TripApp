@@ -31,13 +31,13 @@ export const postTravel = (
     type: travelType,
     info: info,
   };
-  console.log(travelToAdd, "<---- travel to ADD")
+  console.log(travelToAdd, "<---- travel to ADD");
   console.log(trip_id, "<--- trip id api");
   return axios
     .post(`https://tripappbe.onrender.com/trips/${trip_id}/travel`, travelToAdd)
     .then((travelData) => {
       console.log("GREEN LIGHT");
-      console.log(travelData.data, "<---- TRAVEL DATA API");
+      console.log(travelData, "<---- TRAVEL DATA API");
       return travelData.data;
     })
     .catch((error) => {
@@ -45,4 +45,3 @@ export const postTravel = (
       console.log(error);
     });
 };
-

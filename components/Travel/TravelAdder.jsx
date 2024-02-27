@@ -79,7 +79,7 @@ export default function TravelAdder({ chosenTrip }) {
     console.log(newTravel, "<--- NEW TRAVEL TO ADD");
 
     postTravel(
-      chosenTrip,
+      chosenTrip._id,
       startdate,
       leavetime,
       arrivedate,
