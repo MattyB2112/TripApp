@@ -30,7 +30,7 @@ export default function SingleTrip({ route }) {
   if (isLoading)
     return (
       <View style={styles.container}>
-        <Text>Loading</Text>
+        <Text>Loading single trip</Text>
       </View>
     );
 

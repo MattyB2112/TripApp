@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import Modal from "react-native-modal";
 import SingleTrip from "./SingleTrip";
+import TripAdder from "./TripAdder";
 
 import { UserContext } from "../../contexts/UserContext";
 import { getTrips, deleteTrip } from "../../api";
@@ -17,6 +18,7 @@ export default function TripList({ navigation }) {
   const [trips, setTrips] = useState([]);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [tripsChanged, setTripsChanged] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalName, setModalName] = useState("");
@@ -40,7 +42,6 @@ export default function TripList({ navigation }) {
   }, [tripsChanged]);
 
   function chooseTrip(id) {
-    console.log("pressed button");
     const trip = trips.filter((trip) => {
       return trip._id === id;
     });
@@ -73,7 +74,18 @@ export default function TripList({ navigation }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        {/* <ScrollView> */}
+        <View>
+          <Pressable style={styles.item} onPress={() => setShowForm(true)}>
+            <Text>Add New Trip</Text>
+          </Pressable>
+          {showForm ? (
+            <TripAdder
+              setTripsChanged={setTripsChanged}
+              setShowForm={setShowForm}
+              setTrips={setTrips}
+            />
+          ) : null}
+        </View>
         {trips.map((trip) => {
           return (
             <View key={trip._id} style={styles.tripItemContainer}>
@@ -123,7 +135,6 @@ export default function TripList({ navigation }) {
             </View>
           );
         })}
-        {/* </ScrollView> */}
       </View>
     </ScrollView>
   );

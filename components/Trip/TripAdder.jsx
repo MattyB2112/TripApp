@@ -12,7 +12,7 @@ import {
 import DatePicker from "@dietime/react-native-date-picker";
 import { postTrip } from "../../api";
 
-export default function TripAdder() {
+export default function TripAdder({ setShowForm, setTripsChanged }) {
   const [tripName, setTripName] = useState("");
 
   const [startPicker, setStartPicker] = useState(false);
@@ -22,9 +22,18 @@ export default function TripAdder() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const [newTrip, setNewTrip] = useState("");
+  const [newTrip, setNewTrip] = useState({});
 
   const { signedInUser, setSignedInUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (Object.keys(newTrip).length !== 0) {
+      postTrip(newTrip).then((response) => {
+        setTripsChanged(true);
+        setShowForm(false);
+      });
+    }
+  }, [newTrip]);
 
   const currentYear = new Date().getFullYear();
 
@@ -50,7 +59,6 @@ export default function TripAdder() {
     setEndPicker(false);
     const dateStr = new Date(date).toISOString();
     setEndDate(dateStr);
-    setNewTrip(tripToAdd);
   }
 
   function formatDate(date) {
@@ -65,10 +73,7 @@ export default function TripAdder() {
   };
 
   function handleCreateTrip() {
-    //not working yet
-    postTrip(newTrip, signedInUser).then((response) => {
-      console.log("AFTER POST REQUEST", response);
-    });
+    setNewTrip(tripToAdd);
   }
 
   return (
