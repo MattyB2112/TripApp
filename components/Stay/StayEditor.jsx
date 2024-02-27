@@ -23,50 +23,50 @@ export default function StayEditor({
   const [stayType, setStayType] = useState("");
   const [info, setInfo] = useState("");
 
-  const [newStay, setNewStay] = useState({});
+  const [patchedStay, setPatchedStay] = useState({});
 
   function handleStayStartDateInput(text) {
     setStartDate(text);
-    setNewStay((currentStayToAdd) => ({
-      ...currentStayToAdd,
+    setPatchedStay((currentPatchedStay) => ({
+      ...currentPatchedStay,
       startdate: text,
     }));
   }
 
   function handleStayEndDateInput(text) {
     setEndDate(text);
-    setNewStay((currentStayToAdd) => ({
-      ...currentStayToAdd,
+    setPatchedStay((currentPatchedStay) => ({
+      ...currentPatchedStay,
       enddate: text,
     }));
   }
 
   function handleStayNameInput(text) {
     setName(text);
-    setNewStay((currentStayToAdd) => ({
-      ...currentStayToAdd,
+    setPatchedStay((currentPatchedStay) => ({
+      ...currentPatchedStay,
       name: text,
     }));
   }
 
   function handleStayTypeInput(text) {
     setStayType(text);
-    setNewStay((currentStayToAdd) => ({
-      ...currentStayToAdd,
+    setPatchedStay((currentPatchedStay) => ({
+      ...currentPatchedStay,
       type: text,
     }));
   }
 
   function handleStayInfoInput(text) {
     setInfo(text);
-    setNewStay((currentStayToAdd) => ({
-      ...currentStayToAdd,
+    setPatchedStay((currentPatchedStay) => ({
+      ...currentPatchedStay,
       info: text,
     }));
   }
 
   function handleSubmitStay() {
-    patchStay(chosenTrip._id, stay_id, newStay).then(() => {
+    patchStay(chosenTrip._id, stay_id, patchedStay).then(() => {
       setModifyTrip(true);
     });
 

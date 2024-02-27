@@ -25,6 +25,7 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
           <View key={stayItem._id} style={styles.item}>
             <Text>Start date: {stayItem.startdate}</Text>
             <Text>End time: {stayItem.enddate}</Text>
+            <Text>Name: {stayItem.name}</Text>
             <Text>Type: {stayItem.type}</Text>
             <Text>Info : {stayItem.info}</Text>
             <View style={styles.buttonContainer}>

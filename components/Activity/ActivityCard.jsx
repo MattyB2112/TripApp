@@ -24,9 +24,9 @@ export default function ActivityCard({ chosenTrip, setModifyTrip }) {
       {chosenTrip.activities.map((activityItem) => {
         return (
           <View key={activityItem._id} style={styles.item}>
-            <Text>{activityItem.name}</Text>
-            <Text>{activityItem.startdate}</Text>
-            <Text>{activityItem.info}</Text>
+            <Text>Name: {activityItem.name}</Text>
+            <Text>Start date: {activityItem.startdate}</Text>
+            <Text>Info: {activityItem.info}</Text>
             <View style={styles.buttonContainer}>
               <Pressable
                 style={styles.button}

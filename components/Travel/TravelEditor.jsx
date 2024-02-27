@@ -24,58 +24,58 @@ export default function TravelEditor({
   const [travelType, setTravelType] = useState("");
   const [info, setInfo] = useState("");
 
-  const [newTravel, setNewTravel] = useState({});
+  const [patchedTravel, setPatchedTravel] = useState({});
 
   function handleTravelStartDateInput(text) {
     setStartDate(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       startdate: text,
     }));
   }
 
   function handleTravelLeaveTimeInput(text) {
     setLeaveTime(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       leavetime: text,
     }));
   }
 
   function handleTravelArriveDateInput(text) {
     setArriveDate(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       arrivedate: text,
     }));
   }
 
   function handleTravelArriveTimeInput(text) {
     setArriveTime(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       arrivetime: text,
     }));
   }
 
   function handleTravelTypeInput(text) {
     setTravelType(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       type: text,
     }));
   }
 
   function handleTravelInfoInput(text) {
     setInfo(text);
-    setNewTravel((currentTravelToAdd) => ({
-      ...currentTravelToAdd,
+    setPatchedTravel((currentPatchedTravel) => ({
+      ...currentPatchedTravel,
       info: text,
     }));
   }
 
   function handleSubmitTravel() {
-    patchTravel(chosenTrip._id, travel_id, newTravel).then(() => {
+    patchTravel(chosenTrip._id, travel_id, patchedTravel).then(() => {
       setModifyTrip(true);
     });
 

@@ -20,34 +20,34 @@ export default function ActivityEditor({
   const [startDate, setStartDate] = useState("");
   const [info, setInfo] = useState("");
 
-  const [newActivity, setNewActivity] = useState({});
+  const [patchedActivity, setPatchedActivity] = useState({});
 
   function handleActivityStartDateInput(text) {
     setStartDate(text);
-    setNewActivity((currentActivityToAdd) => ({
-      ...currentActivityToAdd,
+    setPatchedActivity((currentPatchedActivity) => ({
+      ...currentPatchedActivity,
       startdate: text,
     }));
   }
 
   function handleActivityNameInput(text) {
     setName(text);
-    setNewActivity((currentActivityToAdd) => ({
-      ...currentActivityToAdd,
+    setPatchedActivity((currentPatchedActivity) => ({
+      ...currentPatchedActivity,
       name: text,
     }));
   }
 
   function handleActivityInfoInput(text) {
     setInfo(text);
-    setNewActivity((currentActivityToAdd) => ({
-      ...currentActivityToAdd,
+    setPatchedActivity((currentPatchedActivity) => ({
+      ...currentPatchedActivity,
       info: text,
     }));
   }
 
   function handleSubmitActivity() {
-    patchActivity(chosenTrip._id, activity_id, newActivity).then(() => {
+    patchActivity(chosenTrip._id, activity_id, patchedActivity).then(() => {
       setModifyTrip(true);
     });
 
