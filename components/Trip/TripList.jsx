@@ -16,6 +16,7 @@ import { getTrips, deleteTrip } from "../../api";
 export default function TripList({ navigation }) {
   const [trips, setTrips] = useState([]);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
+  const [isLoading, setIsLoading] = useState(true);
   const [tripsChanged, setTripsChanged] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalName, setModalName] = useState("");
@@ -33,6 +34,7 @@ export default function TripList({ navigation }) {
         });
       });
       setTrips(signedInUserTrips);
+      setIsLoading(false);
       setTripsChanged(false);
     });
   }, [tripsChanged]);
@@ -58,6 +60,14 @@ export default function TripList({ navigation }) {
       setTripsChanged(true);
       handleModal();
     });
+  }
+
+  if (isLoading) {
+    return (
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (
