@@ -6,6 +6,12 @@ export const getTrips = () => {
   });
 };
 
+export const getUsers = () => {
+  return axios.get("https://tripappbe.onrender.com/users").then((response) => {
+    return response.data.users;
+  });
+};
+
 export const getTripById = (trip_id) => {
   return axios
     .get(`https://tripappbe.onrender.com/trips/${trip_id}`)
@@ -38,5 +44,16 @@ export const postActivity = (trip_id, newActivity) => {
     )
     .then((activityData) => {
       return activityData;
+    });
+};
+
+export const postMember = (trip_id, newMember) => {
+  console.log(trip_id, "<==== trip ID");
+  console.log(newMember, "<==== new MEMBER");
+  return axios
+    .post(`https://tripappbe.onrender.com/trips/${trip_id}/members`, newMember)
+    .then((memberData) => {
+      console.log(memberData, "<--- MEMBER DATA");
+      return memberData;
     });
 };

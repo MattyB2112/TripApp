@@ -11,6 +11,7 @@ import TripAdder from "./TripAdder";
 import TravelAdder from "../Travel/TravelAdder";
 import StayAdder from "../Stay/StayAdder.jsx";
 import ActivityAdder from "../Activity/ActivityAdder.jsx";
+import MemberAdder from "../Members/MemberAdder.jsx";
 
 export default function SingleTrip({ route }) {
   const { trip_id } = route.params;

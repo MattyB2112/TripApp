@@ -61,7 +61,6 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        {/* Travel Name Input */}
         {showForm && (
           <>
             <Text>NAME:</Text>
@@ -80,7 +79,6 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
               onChangeText={handleActivityInfoInput}
             />
 
-            {/* Add Travel Button */}
             <Pressable
               style={styles.addActivityBtn}
               onPress={handleSubmitActivity}

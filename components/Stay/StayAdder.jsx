@@ -79,7 +79,6 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-        {/* Travel Name Input */}
         {showForm && (
           <>
             <Text>START DATE:</Text>
@@ -108,7 +107,6 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
               onChangeText={handleStayInfoInput}
             />
 
-            {/* Add Travel Button */}
             <Pressable style={styles.addStayBtn} onPress={handleSubmitStay}>
               <Text style={styles.addStayText}>SUBMIT STAY!</Text>
             </Pressable>
