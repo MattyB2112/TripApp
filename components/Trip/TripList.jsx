@@ -1,14 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+  Button,
+} from "react-native";
+import Modal from "react-native-modal";
 import SingleTrip from "./SingleTrip";
 
 import { UserContext } from "../../contexts/UserContext";
-import { getTrips } from "../../api";
+import { getTrips, deleteTrip } from "../../api";
 
 export default function TripList({ navigation }) {
   const [trips, setTrips] = useState([]);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
-  console.log(signedInUser);
+  const [tripsChanged, setTripsChanged] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalName, setModalName] = useState("");
+  const [modalDelete, setModalDelete] = useState("");
 
   useEffect(() => {
     getTrips().then((data) => {
@@ -22,8 +33,9 @@ export default function TripList({ navigation }) {
         });
       });
       setTrips(signedInUserTrips);
+      setTripsChanged(false);
     });
-  }, []);
+  }, [tripsChanged]);
 
   function chooseTrip(id) {
     console.log("pressed button");
@@ -33,8 +45,19 @@ export default function TripList({ navigation }) {
     navigation.navigate("Single Trip", { trip_id: id });
   }
 
-  function deleteTrip(id) {
-    console.log(id, "trip id");
+  const handleModal = () => setIsModalVisible(() => !isModalVisible);
+
+  const doubleFunc = (name, id) => {
+    handleModal();
+    setModalName(name);
+    setModalDelete(id);
+  };
+
+  function handleDelete(id) {
+    deleteTrip(id).then(() => {
+      setTripsChanged(true);
+      handleModal();
+    });
   }
 
   return (
@@ -47,9 +70,46 @@ export default function TripList({ navigation }) {
               <Pressable onPress={() => chooseTrip(trip._id)}>
                 <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
               </Pressable>
-              <Pressable onPress={() => deleteTrip(trip._id)}>
+              <Pressable
+                style={styles.deleteButton}
+                onPress={() => doubleFunc(trip.name, trip._id)}
+              >
                 <Text style={[styles.item, styles.titleText]}>Delete</Text>
               </Pressable>
+              <Modal
+                size="sm"
+                backdropOpacity={0.3}
+                transparent={true}
+                isVisible={isModalVisible}
+              >
+                <View
+                  style={{
+                    backgroundColor: "#D7CCB2",
+                    height: 200,
+                    padding: 5,
+                    textAlign: "center",
+                  }}
+                >
+                  <Text style={styles.modalHeader}>{"Warning!\n"}</Text>
+                  <Text styles={styles.modalInfo}>
+                    {`\nThis action cannot be undone. Are you sure you want to delete "${modalName}" and all the information within it?\n\n\n`}
+                  </Text>
+                  <View style={styles.modalButtonContainer}>
+                    <Pressable
+                      style={styles.cancelDelete}
+                      onPress={handleModal}
+                    >
+                      <Text style={styles.cancelText}>🚫 Cancel</Text>
+                    </Pressable>
+                    <Pressable
+                      style={styles.confirmDelete}
+                      onPress={() => handleDelete(modalDelete)}
+                    >
+                      <Text style={styles.confirmText}>✔️ Delete trip</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              </Modal>
             </View>
           );
         })}
@@ -61,17 +121,20 @@ export default function TripList({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 50,
+    display: "flex",
+    padding: 20,
     backgroundColor: "#D7CCB2",
   },
   item: {
-    padding: 20,
+    padding: 15,
     fontSize: 15,
     marginTop: 5,
     borderColor: "#423219",
     borderWidth: 2,
     borderRadius: 5,
+  },
+  deleteButton: {
+    justifyContent: "right",
   },
   text: {
     color: "black",
@@ -87,5 +150,31 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     gap: 10,
+    padding: 10,
+  },
+  modalHeader: {
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "red",
+  },
+  modalButtonContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+  },
+  cancelDelete: {
+    backgroundColor: "red",
+    padding: 5,
+  },
+  confirmDelete: {
+    backgroundColor: "green",
+    padding: 5,
+  },
+  confirmText: {
+    fontSize: 25,
+  },
+  cancelText: {
+    fontSize: 25,
   },
 });
