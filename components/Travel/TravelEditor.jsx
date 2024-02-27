@@ -80,9 +80,7 @@ export default function TravelEditor({
     });
 
     setShowForm(false);
-    //setShowAddBtn(true);
   }
-  //   return <Text>form</Text>;
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -118,19 +116,20 @@ export default function TravelEditor({
             style={styles.textInput}
             onChangeText={handleTravelInfoInput}
           />
-
-          {/* Add Travel Button */}
-          <Pressable style={styles.addTravelBtn} onPress={handleSubmitTravel}>
-            <Text style={styles.addTravelText}>Confirm</Text>
-          </Pressable>
+          <View style={styles.formBtnContainer}>
+            {/* Add Travel Button */}
+            <Pressable style={styles.addTravelBtn} onPress={handleSubmitTravel}>
+              <Text style={styles.addTravelText}>Confirm</Text>
+            </Pressable>
+            {/*Cancel form button */}
+            <Pressable
+              style={styles.addTravelBtn}
+              onPress={() => setShowForm(false)}
+            >
+              <Text style={styles.addTravelText}>Cancel</Text>
+            </Pressable>
+          </View>
         </>
-        {/*Cancel form button */}
-        <Pressable
-          style={styles.addTravelBtn}
-          onPress={() => setShowForm(false)}
-        >
-          <Text style={styles.addTravelText}>Cancel</Text>
-        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
@@ -167,5 +166,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 15,
     color: "#096502",
+  },
+  formBtnContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "center",
+    gap: 10,
   },
 });

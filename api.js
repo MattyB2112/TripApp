@@ -74,3 +74,12 @@ export const patchTravel = (trip_id, travel_id, newTravel) => {
             return response
         })
 }
+
+export const patchStay = (trip_id, stay_id, newStay) => {
+    return axios
+        .patch(`https://tripappbe.onrender.com/trips/${trip_id}/stay/${stay_id}`, newStay)
+        .then((response) => {
+            console.log(response)
+            return response
+        })
+}
