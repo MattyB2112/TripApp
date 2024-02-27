@@ -1,7 +1,17 @@
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { deleteActivity } from "../../api";
+import ActivityEditor from "./ActivityEditor";
 
 export default function ActivityCard({ chosenTrip, setModifyTrip }) {
+  const [showForm, setShowForm] = useState(false);
+  const [currentlyEditing, setCurrentlyEditing] = useState("");
+
+  function showEditForm(activity_id) {
+    setShowForm(true);
+    setCurrentlyEditing(activity_id);
+  }
+
   function handleActivityDelete(trip_id, activity_id) {
     console.log(trip_id, activity_id);
     deleteActivity(trip_id, activity_id).then((response) => {
@@ -18,7 +28,10 @@ export default function ActivityCard({ chosenTrip, setModifyTrip }) {
             <Text>{activityItem.startdate}</Text>
             <Text>{activityItem.info}</Text>
             <View style={styles.buttonContainer}>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => showEditForm(activityItem._id)}
+              >
                 <Text>Edit</Text>
               </Pressable>
               <Pressable
@@ -30,6 +43,14 @@ export default function ActivityCard({ chosenTrip, setModifyTrip }) {
                 <Text>Delete</Text>
               </Pressable>
             </View>
+            {showForm && currentlyEditing === activityItem._id ? (
+              <ActivityEditor
+                chosenTrip={chosenTrip}
+                setModifyTrip={setModifyTrip}
+                setShowForm={setShowForm}
+                activity_id={activityItem._id}
+              />
+            ) : null}
           </View>
         );
       })}
