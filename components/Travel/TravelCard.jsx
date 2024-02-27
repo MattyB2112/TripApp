@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
 export default function TravelCard({ chosenTrip }) {
-  console.log(chosenTrip);
   return (
     <View style={styles.container}>
       <Text>Travel</Text>

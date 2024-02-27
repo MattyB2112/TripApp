@@ -6,7 +6,9 @@ import ActivityCard from "../Activity/ActivityCard";
 import MemberCard from "../Members/MemberCard";
 import { useEffect, useState } from "react";
 import TripNavBar from "./TripNavBar";
-import { getTripById } from "../../api";
+import { getTripById } from "../../api.js";
+import TripAdder from "./TripAdder";
+import TravelAdder from "../Travel/TravelAdder";
 
 export default function SingleTrip({ route }) {
   const { trip_id } = route.params;
@@ -44,6 +46,9 @@ export default function SingleTrip({ route }) {
         ) : null}
         {navTab === "Members" ? <MemberCard chosenTrip={chosenTrip} /> : null}
       </View>
+      {navTab === "Travel" ? (
+        <TravelAdder chosenTrip={chosenTrip}></TravelAdder>
+      ) : null}
     </ScrollView>
   );
 }

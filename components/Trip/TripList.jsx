@@ -3,12 +3,11 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import SingleTrip from "./SingleTrip";
 
 import { UserContext } from "../../contexts/UserContext";
-import { getTrips } from "../../api";
+import { getTrips } from "../../api.js";
 
 export default function TripList({ navigation }) {
   const [trips, setTrips] = useState([]);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
-  console.log(signedInUser);
 
   useEffect(() => {
     getTrips().then((data) => {
