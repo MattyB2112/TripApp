@@ -2,10 +2,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { deleteTravel } from "../../api";
 
 export default function TravelCard({ chosenTrip, setModifyTrip }) {
-  console.log(chosenTrip);
   function handleTravelDelete(trip_id, travel_id) {
-    console.log(trip_id);
-    console.log(travel_id);
     deleteTravel(trip_id, travel_id).then((response) => {
       setModifyTrip(true);
     });

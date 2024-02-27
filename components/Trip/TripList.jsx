@@ -41,8 +41,7 @@ export default function TripList({ navigation }) {
   }, [tripsChanged]);
 
   function chooseTrip(id) {
-    console.log("pressed button");
-    const trip = trips.filter((trip) => {
+     const trip = trips.filter((trip) => {
       return trip._id === id;
     });
     navigation.navigate("Single Trip", { trip_id: id });
@@ -74,7 +73,6 @@ export default function TripList({ navigation }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        {/* <ScrollView> */}
         <View>
           <Pressable style={styles.item} onPress={() => setShowForm(true)}>
             <Text>Add New Trip</Text>
@@ -136,7 +134,6 @@ export default function TripList({ navigation }) {
             </View>
           );
         })}
-        {/* </ScrollView> */}
       </View>
     </ScrollView>
   );
