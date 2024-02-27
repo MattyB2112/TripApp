@@ -3,13 +3,13 @@ import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { deleteMember } from "../../api";
 
-export default function MemberCard({ chosenTrip }) {
+export default function MemberCard({ chosenTrip, setModifyTrip }) {
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
   const { signedInUser, setSignedInUser } = useContext(UserContext);
 
   function handleMemberDelete(trip_id, member_username) {
     deleteMember(trip_id, member_username).then((response) => {
-      setModify(true);
+      setModifyTrip(true);
     });
   }
   return (
