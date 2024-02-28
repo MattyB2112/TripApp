@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, Pressable } from "react-native";
 import TripNameHeader from "./TripNameHeader";
 import TravelCard from "../Travel/TravelCard";
 import StayCard from "../Stay/StayCard";
@@ -20,6 +20,7 @@ export default function SingleTrip({ route }) {
   const [chosenTrip, setChosenTrip] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [modifyTrip, setModifyTrip] = useState(false);
+  const [syncData, setSyncData] = useState(false);
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -27,11 +28,13 @@ export default function SingleTrip({ route }) {
 
   useEffect(() => {
     getTripById(trip_id).then((data) => {
+      console.log("sync data");
       setIsLoading(false);
       setChosenTrip(data);
       setModifyTrip(false);
+      setSyncData(false);
     });
-  }, [modifyTrip]);
+  }, [modifyTrip, syncData]);
 
   if (isLoading)
     return (
@@ -45,6 +48,9 @@ export default function SingleTrip({ route }) {
       <View>
         <TripNavBar setNavTab={setNavTab} />
         <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
+        <Pressable style={styles.item} onPress={() => setSyncData(true)}>
+          <Text>Sync Data</Text>
+        </Pressable>
         {navTab === "Travel" ? (
           <TravelCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}

@@ -22,6 +22,7 @@ export default function TripList({ navigation }) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalName, setModalName] = useState("");
   const [modalDelete, setModalDelete] = useState("");
+  const [syncData, setSyncData] = useState(false);
 
   useEffect(() => {
     getTrips().then((data) => {
@@ -38,8 +39,9 @@ export default function TripList({ navigation }) {
       setTrips(signedInUserTrips);
       setIsLoading(false);
       setTripsChanged(false);
+      setSyncData(false);
     });
-  }, [tripsChanged]);
+  }, [tripsChanged, syncData]);
 
   function chooseTrip(id) {
     const trip = trips.filter((trip) => {
@@ -75,6 +77,9 @@ export default function TripList({ navigation }) {
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         <View>
+          <Pressable style={styles.item} onPress={() => setSyncData(true)}>
+            <Text>Sync Data</Text>
+          </Pressable>
           <Pressable style={styles.item} onPress={() => setShowForm(true)}>
             <Text>Add New Trip</Text>
           </Pressable>
