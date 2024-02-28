@@ -22,10 +22,10 @@ export default function MemberAdder({ chosenTrip, setModifyTrip }) {
     });
   }
 
-  function handleUserBtn({ _id }) {
-    console.log(_id, "<-- current user ID");
-    postMember(chosenTrip._id, _id).then(() => {
-        console.log("hello")
+  function handleUserBtn(user) {
+    console.log(user, "<-- current user ID");
+    postMember(chosenTrip._id, user._id).then(() => {
+      console.log("hello");
       setModifyTrip(true);
     });
   }
