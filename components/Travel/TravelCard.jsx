@@ -1,6 +1,21 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { deleteTravel } from "../../api";
+import { useState } from "react";
+import TravelEditor from "./TravelEditor";
 
-export default function TravelCard({ chosenTrip }) {
+export default function TravelCard({ chosenTrip, setModifyTrip }) {
+  const [showForm, setShowForm] = useState(false);
+  const [currentlyEditing, setCurrentlyEditing] = useState("");
+  function showEditForm(travel_id) {
+    setShowForm(true);
+    setCurrentlyEditing(travel_id);
+  }
+  function handleTravelDelete(trip_id, travel_id) {
+    deleteTravel(trip_id, travel_id).then((response) => {
+      setModifyTrip(true);
+    });
+  }
+
   return (
     <View style={styles.container}>
       <Text>Travel</Text>
@@ -14,13 +29,29 @@ export default function TravelCard({ chosenTrip }) {
             <Text>Type: {travelItem.type}</Text>
             <Text>Info : {travelItem.info}</Text>
             <View style={styles.buttonContainer}>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => showEditForm(travelItem._id)}
+              >
                 <Text>Edit</Text>
               </Pressable>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => {
+                  handleTravelDelete(chosenTrip._id, travelItem._id);
+                }}
+              >
                 <Text>Delete</Text>
               </Pressable>
             </View>
+            {showForm && currentlyEditing === travelItem._id ? (
+              <TravelEditor
+                chosenTrip={chosenTrip}
+                setModifyTrip={setModifyTrip}
+                setShowForm={setShowForm}
+                travel_id={travelItem._id}
+              />
+            ) : null}
           </View>
         );
       })}

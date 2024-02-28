@@ -1,9 +1,9 @@
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Header from "./components/Reusable/Header";
-import MyTrips from "./pages/MyTrips";
 import SignIn from "./pages/SignIn";
-import Welcome from "./pages/Welcome";
+import MyTrips from "./pages/MyTrips";
 import SingleTrip from "./components/Trip/SingleTrip";
 import { UserProvider } from "./contexts/UserContext";
 
@@ -15,7 +15,6 @@ export default function App() {
       <UserProvider>
         <Header />
         <NavigationContainer>
-          {/* <Header /> */}
           <Stack.Navigator>
             {/* <Stack.Screen name="LOGIN" component={Welcome} /> */}
             <Stack.Screen name="My Trips" component={MyTrips} />
@@ -27,3 +26,13 @@ export default function App() {
     </>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    gap: 20,
+  },
+  chatHeading: {
+    fontSize: 40,
+    textAlign: "center",
+  },
+});

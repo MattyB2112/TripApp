@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../contexts/UserContext";
 import {
   View,
   Text,
@@ -9,8 +10,9 @@ import {
   Pressable,
 } from "react-native";
 import DatePicker from "@dietime/react-native-date-picker";
+import { postTrip } from "../../api";
 
-export default function TripAdder() {
+export default function TripAdder({ setShowForm, setTripsChanged }) {
   const [tripName, setTripName] = useState("");
 
   const [startPicker, setStartPicker] = useState(false);
@@ -20,9 +22,19 @@ export default function TripAdder() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
-  const [newTrip, setNewTrip] = useState("");
+  const [newTrip, setNewTrip] = useState({});
 
-  const loggedInUser = "Jenny";
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (Object.keys(newTrip).length !== 0) {
+      postTrip(newTrip).then((response) => {
+        setTripsChanged(true);
+        setShowForm(false);
+      });
+    }
+  }, [newTrip]);
+
   const currentYear = new Date().getFullYear();
 
   function handleTripNameInput(text) {
@@ -57,12 +69,16 @@ export default function TripAdder() {
     name: tripName,
     startdate: startDate,
     enddate: endDate,
-    admin: loggedInUser,
+    admin: signedInUser.username,
   };
+
+  function handleCreateTrip() {
+    setNewTrip(tripToAdd);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* Trip Name Input */}
         <Text>TRIP NAME:</Text>
         <TextInput
@@ -117,13 +133,11 @@ export default function TripAdder() {
         {startDate && endDate ? (
           <Pressable
             style={styles.createTripBtn}
-            onPress={() => setNewTrip(tripToAdd)}
+            onPress={() => handleCreateTrip()}
           >
             <Text style={styles.createTripText}>CREATE TRIP!</Text>
           </Pressable>
-        ) : (
-          ""
-        )}
+        ) : null}
       </ScrollView>
     </SafeAreaView>
   );

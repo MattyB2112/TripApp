@@ -1,40 +1,63 @@
-// import React from "react";
-// import { useForm } from "react-hook-form";
-// import { Text, View, TextInput } from "react-native";
+import React, { useCallback, useState, useContext } from "react";
+import { useForm } from "react-hook-form";
+import { UserContext } from "../../contexts/UserContext";
+import { View, TextInput } from "react-native";
+import { postUser } from "../../api";
+import { Button } from "react-native-web";
 
-// export default function SignUpForm() {
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//   } = useForm();
-//   const onSubmit = (data) => console.log(data);
-//   console.log(errors);
+export default function SignUpForm({navigation}) {
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
 
-//   return (
-//     <form onSubmit={handleSubmit(onSubmit)}>
-//       <input
-//         type="text"
-//         placeholder="Enter email address"
-//         {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
-//       />
-//       <input
-//         type="text"
-//         placeholder="Choose username"
-//         {...register("username", { required: true })}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Password"
-//         {...register("Password", { required: true })}
-//       />
-//       <input
-//         type="password"
-//         placeholder="Confirm password"
-//         {...register("Confirm password", { required: true })}
-//       />
+  const { register, handleSubmit, setValue } = useForm();
+  const onSubmit = useCallback(
+    (formData) => {
+      try {
+        postUser(formData)
+          .then((response) => {
+           setSignedInUser(response);
+           navigation.navigate("My Trips");
+          })
+      } catch (error) {
+        console.error(error);
+      }
 
-//       <input type="submit" />
-//     </form>
-//   );
-// }
+      register("username");
+      register("email");
+      register("password");
+    },
+    [register]
+  );
+  console.log(signedInUser);
+  const onChangeField = useCallback(
+    (name) => (text) => {
+      setValue(name, text);
+    },
+    []
+  );
+
+  return (
+    <View>
+      <TextInput
+        autoCompleteType="username"
+        keyboardType="username"
+        textContentType="username"
+        placeholder="Username"
+        onChangeText={onChangeField("username")}
+      />
+      <TextInput
+        autoCompleteType="email"
+        keyboardType="email-address"
+        textContentType="emailAddress"
+        placeholder="Email"
+        onChangeText={onChangeField("email")}
+      />
+      <TextInput
+        secureTextEntry
+        autoCompleteType="password"
+        placeholder="Password"
+        onChangeText={onChangeField("password")}
+      />
+      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+    </View>
+  );
+}

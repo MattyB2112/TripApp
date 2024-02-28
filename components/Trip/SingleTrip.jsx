@@ -12,6 +12,7 @@ import TravelAdder from "../Travel/TravelAdder";
 import StayAdder from "../Stay/StayAdder.jsx";
 import ActivityAdder from "../Activity/ActivityAdder.jsx";
 import MemberAdder from "../Members/MemberAdder.jsx";
+import Chat from "../Chat/Chat";
 
 export default function SingleTrip({ route }) {
   const { trip_id } = route.params;
@@ -44,12 +45,21 @@ export default function SingleTrip({ route }) {
       <View>
         <TripNavBar setNavTab={setNavTab} />
         <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
-        {navTab === "Travel" ? <TravelCard chosenTrip={chosenTrip} /> : null}
-        {navTab === "Stay" ? <StayCard chosenTrip={chosenTrip} /> : null}
-        {navTab === "Activities" ? (
-          <ActivityCard chosenTrip={chosenTrip} />
+        {navTab === "Travel" ? (
+          <TravelCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
-        {navTab === "Members" ? <MemberCard chosenTrip={chosenTrip} /> : null}
+        {navTab === "Stay" ? (
+          <StayCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Activities" ? (
+          <ActivityCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Members" ? (
+          <MemberCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Chat" ? (
+          <Chat chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
       </View>
       {navTab === "Travel" ? (
         <TravelAdder

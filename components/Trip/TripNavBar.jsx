@@ -8,8 +8,8 @@ export default function TripNavBar({ setNavTab }) {
     <View style={styles.container}>
       <Pressable onPress={() => handleTabSwitching("Travel")}>
         <Text style={styles.navBarOption}>
-          Travel{" "}
-          <Image
+          Travel ✈️
+          {/* <Image
             style={{
               alignContent: "center",
               backgroundColor: "transparent",
@@ -18,13 +18,13 @@ export default function TripNavBar({ setNavTab }) {
               resizeMode: "contain",
             }}
             source={require("./images/plane.png")}
-          />
+          /> */}
         </Text>
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Stay")}>
         <Text style={styles.navBarOption}>
-          Stay{" "}
-          <Image
+          Stay 🛌
+          {/* <Image
             style={{
               alignContent: "center",
               backgroundColor: "transparent",
@@ -33,13 +33,13 @@ export default function TripNavBar({ setNavTab }) {
               resizeMode: "contain",
             }}
             source={require("./images/house.jpg")}
-          />
+          /> */}
         </Text>
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Activities")}>
         <Text style={styles.navBarOption}>
-          Activities{" "}
-          <Image
+          Activities 🍴
+          {/* <Image
             style={{
               alignContent: "center",
               backgroundColor: "green",
@@ -48,13 +48,13 @@ export default function TripNavBar({ setNavTab }) {
               resizeMode: "contain",
             }}
             source={require("./images/food.png")}
-          />
+          /> */}
         </Text>
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Members")}>
         <Text style={styles.navBarOption}>
-          Members{" "}
-          <Image
+          Members 👫
+          {/* <Image
             style={{
               alignContent: "center",
               backgroundColor: "transparent",
@@ -63,7 +63,22 @@ export default function TripNavBar({ setNavTab }) {
               resizeMode: "contain",
             }}
             source={require("./images/person.png")}
-          />
+          /> */}
+        </Text>
+      </Pressable>
+      <Pressable onPress={() => handleTabSwitching("Chat")}>
+        <Text style={styles.navBarOption}>
+          Chat 💬
+          {/* <Image
+            style={{
+              alignContent: "center",
+              backgroundColor: "transparent",
+              width: 20,
+              height: 20,
+              resizeMode: "contain",
+            }}
+            source={require("./images/person.png")}
+          /> */}
         </Text>
       </Pressable>
     </View>
@@ -83,11 +98,11 @@ const styles = StyleSheet.create({
   navBarOption: {
     display: "flex",
     flexDirection: "row",
-    fontSize: 15,
+    fontSize: 16,
     borderColor: "black",
     borderWidth: 1,
     padding: 5,
-    backgroundColor: "white",
+    backgroundColor: "green",
     alignContent: "center",
   },
 });
