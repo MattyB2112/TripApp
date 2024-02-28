@@ -24,21 +24,21 @@ export default function TripList({ navigation }) {
   const [modalDelete, setModalDelete] = useState("");
 
   useEffect(() => {
-      getTrips().then((data) => {
-        const signedInUserTrips = [];
-        console.log(signedInUser);
+    getTrips().then((data) => {
+      const signedInUserTrips = [];
+      console.log(signedInUser);
 
-        data.forEach((trip) => {
-          trip.members.forEach((member) => {
-            if (member.username === signedInUser.username) {
-              signedInUserTrips.push(trip);
-            }
-          });
+      data.forEach((trip) => {
+        trip.members.forEach((member) => {
+          if (member.username === signedInUser.username) {
+            signedInUserTrips.push(trip);
+          }
         });
-        setTrips(signedInUserTrips);
-        setIsLoading(false);
-        setTripsChanged(false);
       });
+      setTrips(signedInUserTrips);
+      setIsLoading(false);
+      setTripsChanged(false);
+    });
   }, [tripsChanged]);
 
   function chooseTrip(id) {

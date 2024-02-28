@@ -6,7 +6,12 @@ import ActivityCard from "../Activity/ActivityCard";
 import MemberCard from "../Members/MemberCard";
 import { useEffect, useState } from "react";
 import TripNavBar from "./TripNavBar";
-import { getTripById } from "../../api";
+import { getTripById } from "../../api.js";
+import TripAdder from "./TripAdder";
+import TravelAdder from "../Travel/TravelAdder";
+import StayAdder from "../Stay/StayAdder.jsx";
+import ActivityAdder from "../Activity/ActivityAdder.jsx";
+import MemberAdder from "../Members/MemberAdder.jsx";
 import Chat from "../Chat/Chat";
 
 export default function SingleTrip({ route }) {
@@ -15,7 +20,6 @@ export default function SingleTrip({ route }) {
   const [chosenTrip, setChosenTrip] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [modifyTrip, setModifyTrip] = useState(false);
-  const chat = new Chat();
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -57,6 +61,30 @@ export default function SingleTrip({ route }) {
           <Chat chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
       </View>
+      {navTab === "Travel" ? (
+        <TravelAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></TravelAdder>
+      ) : null}
+      {navTab === "Stay" ? (
+        <StayAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></StayAdder>
+      ) : null}
+      {navTab === "Activities" ? (
+        <ActivityAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></ActivityAdder>
+      ) : null}
+      {navTab === "Members" ? (
+        <MemberAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></MemberAdder>
+      ) : null}
     </ScrollView>
   );
 }
