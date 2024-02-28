@@ -24,24 +24,25 @@ export default function TripList({ navigation }) {
   const [modalDelete, setModalDelete] = useState("");
 
   useEffect(() => {
-    getTrips().then((data) => {
-      const signedInUserTrips = [];
+      getTrips().then((data) => {
+        const signedInUserTrips = [];
+        console.log(signedInUser);
 
-      data.forEach((trip) => {
-        trip.members.forEach((member) => {
-          if (member.username === signedInUser.username) {
-            signedInUserTrips.push(trip);
-          }
+        data.forEach((trip) => {
+          trip.members.forEach((member) => {
+            if (member.username === signedInUser.username) {
+              signedInUserTrips.push(trip);
+            }
+          });
         });
+        setTrips(signedInUserTrips);
+        setIsLoading(false);
+        setTripsChanged(false);
       });
-      setTrips(signedInUserTrips);
-      setIsLoading(false);
-      setTripsChanged(false);
-    });
   }, [tripsChanged]);
 
   function chooseTrip(id) {
-     const trip = trips.filter((trip) => {
+    const trip = trips.filter((trip) => {
       return trip._id === id;
     });
     navigation.navigate("Single Trip", { trip_id: id });
