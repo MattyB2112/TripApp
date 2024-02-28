@@ -108,14 +108,14 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
             />
 
             <Pressable style={styles.addStayBtn} onPress={handleSubmitStay}>
-              <Text style={styles.addStayText}>SUBMIT STAY!</Text>
+              <Text style={styles.addStayText}>SUBMIT STAY</Text>
             </Pressable>
           </>
         )}
 
         {showAddBtn && (
           <Pressable style={styles.addStayBtn} onPress={handleAddBtn}>
-            <Text style={styles.addStayText}>ADD STAY!</Text>
+            <Text style={styles.addStayText}>ADD STAY</Text>
           </Pressable>
         )}
       </ScrollView>
@@ -143,12 +143,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#423219",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
     borderColor: "#291E0E",
     borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
+    padding: 10,
+    marginTop: 15,
   },
   addStayText: {
     fontWeight: "bold",

@@ -14,12 +14,12 @@ export default function MemberCard({ chosenTrip, setModifyTrip }) {
   }
   return (
     <View style={styles.container}>
-      <Text>Members</Text>
-      <Text>Admin: {chosenTrip.admin}</Text>
+      <Text style={styles.tabHeader}>Members</Text>
+      <Text style={styles.admin}>Group admin: {chosenTrip.admin}</Text>
       {chosenTrip.members.map((memberItem) => {
         return (
           <View key={memberItem.username} style={styles.item}>
-            <Text>{memberItem.username}</Text>
+            <Text style={styles.cardText}>{memberItem.username}</Text>
             {signedInUser.username === chosenTrip.admin &&
             chosenTrip.admin !== memberItem.username ? (
               <View style={styles.buttonContainer}>
@@ -31,7 +31,7 @@ export default function MemberCard({ chosenTrip, setModifyTrip }) {
                     })
                   }
                 >
-                  <Text>Delete</Text>
+                  <Text style={styles.cardText}>DELETE</Text>
                 </Pressable>
               </View>
             ) : null}
@@ -51,10 +51,19 @@ const styles = StyleSheet.create({
     alignContent: "center",
     padding: 20,
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 0,
     borderColor: "#423219",
     borderWidth: 2,
     borderRadius: 5,
+    backgroundColor: "#5D8233",
+  },
+  tabHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 15,
+    textShadowColor: "#B2A59B",
+    textShadowOffset: { width: 2, height: 3 },
+    textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
@@ -68,5 +77,20 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
+    backgroundColor: "#423219",
+  },
+  cardText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 14,
+    color: "black",
+    lineHeight: 20,
+  },
+  admin: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 14,
+    color: "black",
+    lineHeight: 5,
   },
 });

@@ -72,71 +72,75 @@ export default function TripList({ navigation }) {
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View>
-          <Pressable style={styles.item} onPress={() => setShowForm(true)}>
-            <Text>Add New Trip</Text>
-          </Pressable>
-          {showForm ? (
-            <TripAdder
-              setTripsChanged={setTripsChanged}
-              setShowForm={setShowForm}
-              setTrips={setTrips}
-            />
-          ) : null}
-        </View>
-        {trips.map((trip) => {
-          return (
-            <View key={trip._id} style={styles.tripItemContainer}>
-              <Pressable onPress={() => chooseTrip(trip._id)}>
-                <Text style={[styles.item, styles.titleText]}>{trip.name}</Text>
-              </Pressable>
-              <Pressable
-                style={styles.deleteButton}
-                onPress={() => doubleFunc(trip.name, trip._id)}
-              >
-                <Text style={[styles.item, styles.titleText]}>Delete</Text>
-              </Pressable>
-              <Modal
-                size="sm"
-                backdropOpacity={0.3}
-                transparent={true}
-                isVisible={isModalVisible}
-              >
-                <View
-                  style={{
-                    backgroundColor: "#D7CCB2",
-                    height: 200,
-                    padding: 5,
-                    textAlign: "center",
-                  }}
-                >
-                  <Text style={styles.modalHeader}>{"Warning!\n"}</Text>
-                  <Text styles={styles.modalInfo}>
-                    {`\nThis action cannot be undone. Are you sure you want to delete "${modalName}" and all the information within it?\n\n\n`}
+    // <View>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.container}>
+          <View>
+            <Pressable style={styles.item} onPress={() => setShowForm(true)}>
+              <Text>Add New Trip</Text>
+            </Pressable>
+            {showForm ? (
+              <TripAdder
+                setTripsChanged={setTripsChanged}
+                setShowForm={setShowForm}
+                setTrips={setTrips}
+              />
+            ) : null}
+          </View>
+          {trips.map((trip) => {
+            return (
+              <View key={trip._id} style={styles.tripItemContainer}>
+                <Pressable onPress={() => chooseTrip(trip._id)}>
+                  <Text style={[styles.item, styles.titleText]}>
+                    {trip.name}
                   </Text>
-                  <View style={styles.modalButtonContainer}>
-                    <Pressable
-                      style={styles.cancelDelete}
-                      onPress={handleModal}
-                    >
-                      <Text style={styles.cancelText}>🚫 Cancel</Text>
-                    </Pressable>
-                    <Pressable
-                      style={styles.confirmDelete}
-                      onPress={() => handleDelete(modalDelete)}
-                    >
-                      <Text style={styles.confirmText}>✔️ Delete trip</Text>
-                    </Pressable>
+                </Pressable>
+                <Pressable
+                  style={styles.deleteButton}
+                  onPress={() => doubleFunc(trip.name, trip._id)}
+                >
+                  <Text style={[styles.item, styles.titleText]}>Delete</Text>
+                </Pressable>
+                <Modal
+                  size="sm"
+                  backdropOpacity={0.3}
+                  transparent={true}
+                  isVisible={isModalVisible}
+                >
+                  <View
+                    style={{
+                      backgroundColor: "#D7CCB2",
+                      height: 200,
+                      padding: 5,
+                      textAlign: "center",
+                    }}
+                  >
+                    <Text style={styles.modalHeader}>{"Warning!\n"}</Text>
+                    <Text styles={styles.modalInfo}>
+                      {`\nThis action cannot be undone. Are you sure you want to delete "${modalName}" and all the information within it?\n\n\n`}
+                    </Text>
+                    <View style={styles.modalButtonContainer}>
+                      <Pressable
+                        style={styles.cancelDelete}
+                        onPress={handleModal}
+                      >
+                        <Text style={styles.cancelText}>🚫 Cancel</Text>
+                      </Pressable>
+                      <Pressable
+                        style={styles.confirmDelete}
+                        onPress={() => handleDelete(modalDelete)}
+                      >
+                        <Text style={styles.confirmText}>✔️ Delete trip</Text>
+                      </Pressable>
+                    </View>
                   </View>
-                </View>
-              </Modal>
-            </View>
-          );
-        })}
-      </View>
-    </ScrollView>
+                </Modal>
+              </View>
+            );
+          })}
+        </View>
+      </ScrollView>
+    // </View>
   );
 }
 

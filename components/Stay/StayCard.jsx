@@ -19,27 +19,39 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
   }
   return (
     <View style={styles.container}>
-      <Text>Stay</Text>
+      <Text style={styles.tabHeader}>Stay</Text>
       {chosenTrip.stay.map((stayItem) => {
         return (
           <View key={stayItem._id} style={styles.item}>
-            <Text>Start date: {stayItem.startdate}</Text>
-            <Text>End time: {stayItem.enddate}</Text>
-            <Text>Name: {stayItem.name}</Text>
-            <Text>Type: {stayItem.type}</Text>
-            <Text>Info : {stayItem.info}</Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Check-In: </View>
+              {stayItem.startdate}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Check-Out: </View>
+              {stayItem.enddate}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Name: </View> {stayItem.name}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Type: </View> {stayItem.type}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Info: </View> {stayItem.info}
+            </Text>
             <View style={styles.buttonContainer}>
               <Pressable
                 style={styles.button}
                 onPress={() => showEditForm(stayItem._id)}
               >
-                <Text>Edit</Text>
+                <Text style={styles.btnText}>EDIT</Text>
               </Pressable>
               <Pressable
                 style={styles.button}
                 onPress={() => handleStayDelete(chosenTrip._id, stayItem._id)}
               >
-                <Text>Delete</Text>
+                <Text style={styles.btnText}>DELETE</Text>
               </Pressable>
             </View>
             {showForm && currentlyEditing === stayItem._id ? (
@@ -65,10 +77,19 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 0,
     borderColor: "#423219",
     borderWidth: 2,
     borderRadius: 5,
+    backgroundColor: "#5D8233",
+  },
+  tabHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 15,
+    textShadowColor: "#B2A59B",
+    textShadowOffset: { width: 2, height: 3 },
+    textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
@@ -82,5 +103,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
+    backgroundColor: "#423219",
+  },
+  btnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "black",
+    lineHeight: 15,
+  },
+  cardText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#263D42",
+    lineHeight: 20,
+  },
+  cardTitle: {
+    fontSize: 15,
+    color: "black",
   },
 });

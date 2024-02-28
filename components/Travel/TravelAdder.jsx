@@ -124,14 +124,14 @@ export default function TravelAdder({ chosenTrip, setModifyTrip }) {
 
             {/* Add Travel Button */}
             <Pressable style={styles.addTravelBtn} onPress={handleSubmitTravel}>
-              <Text style={styles.addTravelText}>SUBMIT TRAVEL!</Text>
+              <Text style={styles.addTravelText}>SUBMIT TRAVEL</Text>
             </Pressable>
           </>
         )}
 
         {showAddBtn && (
           <Pressable style={styles.addTravelBtn} onPress={handleAddBtn}>
-            <Text style={styles.addTravelText}>ADD TRAVEL!</Text>
+            <Text style={styles.addTravelText}>ADD TRAVEL</Text>
           </Pressable>
         )}
       </ScrollView>
@@ -159,12 +159,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#423219",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
     borderColor: "#291E0E",
     borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
+    padding: 10,
+    marginTop: 15,
   },
   addTravelText: {
     fontWeight: "bold",

@@ -43,7 +43,7 @@ export default function MemberAdder({ chosenTrip, setModifyTrip }) {
           </Pressable>
         ))}
         <Pressable style={styles.addMemberBtn} onPress={handleGetUsersBtn}>
-          <Text style={styles.addMemberText}>ADD MEMBER!</Text>
+          <Text style={styles.addMemberText}>ADD MEMBER</Text>
         </Pressable>
       </ScrollView>
     </SafeAreaView>
@@ -70,12 +70,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#423219",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
     borderColor: "#291E0E",
     borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
+    padding: 10,
+    marginTop: 15,
   },
   addMemberText: {
     fontWeight: "bold",

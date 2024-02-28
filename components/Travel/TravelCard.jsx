@@ -18,22 +18,39 @@ export default function TravelCard({ chosenTrip, setModifyTrip }) {
 
   return (
     <View style={styles.container}>
-      <Text>Travel</Text>
+      <Text style={styles.tabHeader}>Travel</Text>
       {chosenTrip.travel.map((travelItem) => {
         return (
           <View key={travelItem._id} style={styles.item}>
-            <Text>Start date: {travelItem.startdate}</Text>
-            <Text>Leave time: {travelItem.leavetime}</Text>
-            <Text>Arrive date: {travelItem.arrivedate}</Text>
-            <Text>Arrive time: {travelItem.arrivetime}</Text>
-            <Text>Type: {travelItem.type}</Text>
-            <Text>Info : {travelItem.info}</Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Departure Date: </View>
+              {travelItem.startdate}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Departure Time: </View>
+              {travelItem.leavetime}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Arrival Date: </View>
+              {travelItem.arrivedate}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Arrival Time:</View>
+              {travelItem.arrivetime}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Type: </View>
+              {travelItem.type}
+            </Text>
+            <Text style={styles.cardText}>
+              <View style={styles.cardTitle}>Info: </View> {travelItem.info}
+            </Text>
             <View style={styles.buttonContainer}>
               <Pressable
                 style={styles.button}
                 onPress={() => showEditForm(travelItem._id)}
               >
-                <Text>Edit</Text>
+                <Text style={styles.btnText}>EDIT</Text>
               </Pressable>
               <Pressable
                 style={styles.button}
@@ -41,7 +58,7 @@ export default function TravelCard({ chosenTrip, setModifyTrip }) {
                   handleTravelDelete(chosenTrip._id, travelItem._id);
                 }}
               >
-                <Text>Delete</Text>
+                <Text style={styles.btnText}>DELETE</Text>
               </Pressable>
             </View>
             {showForm && currentlyEditing === travelItem._id ? (
@@ -67,10 +84,19 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 0,
     borderColor: "#423219",
     borderWidth: 2,
     borderRadius: 5,
+    backgroundColor: "#5D8233",
+  },
+  tabHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 15,
+    textShadowColor: "#B2A59B",
+    textShadowOffset: { width: 2, height: 3 },
+    textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
@@ -84,5 +110,24 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
+    backgroundColor: "#423219",
+  },
+  btnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "black",
+    lineHeight: 15,
+  },
+  cardText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#263D42",
+    lineHeight: 20,
+  },
+  cardTitle: {
+    fontSize: 15,
+     color: "black",
   },
 });

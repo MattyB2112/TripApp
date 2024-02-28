@@ -36,6 +36,7 @@ export default class Chat extends React.Component {
               backgroundColor: "white",
               justifyContent: "center",
               padding: 5,
+              borderRadius: 4,
             }}
             autoCorrect={false}
             onSubmitEditing={() => this.submitChatMessage()}
@@ -56,6 +57,11 @@ const styles = StyleSheet.create({
   },
   chatHeading: {
     fontSize: 20,
-    textAlign: "center",
+    fontWeight: "bold",
+    paddingTop: 15,
+    paddingBottom: 15,
+    textShadowColor: "#B2A59B",
+    textShadowOffset: { width: 2, height: 3 },
+    textShadowRadius: 4,
   },
 });
