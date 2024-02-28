@@ -7,6 +7,7 @@ import MemberCard from "../Members/MemberCard";
 import { useEffect, useState } from "react";
 import TripNavBar from "./TripNavBar";
 import { getTripById } from "../../api";
+import Chat from "../Chat/Chat";
 
 export default function SingleTrip({ route }) {
   const { trip_id } = route.params;
@@ -14,6 +15,7 @@ export default function SingleTrip({ route }) {
   const [chosenTrip, setChosenTrip] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [modifyTrip, setModifyTrip] = useState(false);
+  const chat = new Chat();
 
   function formatDate(date) {
     return new Date(date).toDateString();
@@ -50,6 +52,9 @@ export default function SingleTrip({ route }) {
         ) : null}
         {navTab === "Members" ? (
           <MemberCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+        {navTab === "Chat" ? (
+          <Chat chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
       </View>
     </ScrollView>

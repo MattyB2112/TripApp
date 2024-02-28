@@ -1,3 +1,4 @@
+import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Header from "./components/Reusable/Header";
@@ -27,3 +28,13 @@ export default function App() {
     </>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    gap: 20,
+  },
+  chatHeading: {
+    fontSize: 40,
+    textAlign: "center",
+  },
+});

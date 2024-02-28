@@ -66,6 +66,21 @@ export default function TripNavBar({ setNavTab }) {
           /> */}
         </Text>
       </Pressable>
+      <Pressable onPress={() => handleTabSwitching("Chat")}>
+        <Text style={styles.navBarOption}>
+          Chat 💬
+          {/* <Image
+            style={{
+              alignContent: "center",
+              backgroundColor: "transparent",
+              width: 20,
+              height: 20,
+              resizeMode: "contain",
+            }}
+            source={require("./images/person.png")}
+          /> */}
+        </Text>
+      </Pressable>
     </View>
   );
 }
