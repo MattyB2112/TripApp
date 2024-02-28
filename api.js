@@ -65,3 +65,20 @@ export const postTrip = (newTrip) => {
       return response.data;
     });
 };
+
+export const postUser = (userToAdd) => {
+  return axios
+    .post("https://tripappbe.onrender.com/users", userToAdd)
+    .then((response) => {
+      return response.data;
+    });
+};
+
+export const getUser = (username) => {
+  return axios
+    .get(`https://tripappbe.onrender.com/users/${username}`)
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
+};
