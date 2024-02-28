@@ -74,9 +74,12 @@ export default function TripList({ navigation }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View>
-          <Pressable style={styles.item} onPress={() => setShowForm(true)}>
-            <Text>Add New Trip</Text>
+        <View style={styles.container}>
+          <Pressable
+            style={(styles.item, styles.addTripBtn)}
+            onPress={() => setShowForm(true)}
+          >
+            <Text style={styles.btnText}>Add New Trip</Text>
           </Pressable>
           {showForm ? (
             <TripAdder
@@ -96,7 +99,11 @@ export default function TripList({ navigation }) {
                 style={styles.deleteButton}
                 onPress={() => doubleFunc(trip.name, trip._id)}
               >
-                <Text style={[styles.item, styles.titleText]}>Delete</Text>
+                <Text
+                  style={[styles.item, styles.titleText, styles.deleteText]}
+                >
+                  Delete
+                </Text>
               </Pressable>
               <Modal
                 size="sm"
@@ -106,10 +113,11 @@ export default function TripList({ navigation }) {
               >
                 <View
                   style={{
-                    backgroundColor: "#D7CCB2",
+                    backgroundColor: "#FBFAF8",
                     height: 200,
                     padding: 5,
                     textAlign: "center",
+                    borderRadius: 5,
                   }}
                 >
                   <Text style={styles.modalHeader}>{"Warning!\n"}</Text>
@@ -144,18 +152,28 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     padding: 20,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
+    color: "#263D42",
+    gap: 10,
+    justifyContent: "center",
+    alignItems: "center",
   },
   item: {
     padding: 15,
     fontSize: 15,
     marginTop: 5,
-    borderColor: "#423219",
+    borderColor: "#263D42",
     borderWidth: 2,
     borderRadius: 5,
+    color: "#263D42",
+    backgroundColor: "#FBFAF8",
   },
   deleteButton: {
     justifyContent: "right",
+  },
+  deleteText: {
+    backgroundColor: "#263D42",
+    color: "#FBFAF8",
   },
   text: {
     color: "black",
@@ -165,13 +183,20 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "black",
+    color: "#263D42",
   },
   tripItemContainer: {
+    width: "100%",
     flex: 1,
+    flexShrink: 1,
     flexDirection: "row",
     gap: 10,
     padding: 10,
+    // backgroundColor: "#FBFAF8",
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    // borderRadius: 5,
+    justifyContent: "space-between",
   },
   modalHeader: {
     fontSize: 30,
@@ -186,16 +211,36 @@ const styles = StyleSheet.create({
   },
   cancelDelete: {
     backgroundColor: "red",
+    borderRadius: 5,
     padding: 5,
   },
   confirmDelete: {
-    backgroundColor: "green",
+    backgroundColor: "#62C370",
     padding: 5,
+    borderRadius: 5,
   },
   confirmText: {
     fontSize: 25,
   },
   cancelText: {
     fontSize: 25,
+  },
+  addTripBtn: {
+    padding: 15,
+    fontSize: 15,
+    marginTop: 5,
+    // borderColor: "#2D7638",
+    // borderWidth: 2,
+    // borderRadius: 5,
+    borderRadius: 5,
+    color: "#FBFAF8",
+    width: 160,
+    backgroundColor: "#9A7AA0",
+    // backgroundColor: "#785964",
+  },
+  btnText: {
+    color: "#FBFAF8",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
