@@ -17,7 +17,7 @@ export const getTripById = (trip_id) => {
 export const deleteTrip = (trip_id) => {
   return axios
     .delete(`https://tripappbe.onrender.com/trips/${trip_id}`)
-    .then((response) => {});
+    .then((response) => { });
 };
 
 export const deleteTravel = (trip_id, travel_id) => {
@@ -82,3 +82,30 @@ export const getUser = (username) => {
       return response.data;
     });
 };
+
+export const patchTravel = (trip_id, travel_id, patchedTravel) => {
+  return axios
+    .patch(`https://tripappbe.onrender.com/trips/${trip_id}/travel/${travel_id}`, patchedTravel)
+    .then((response) => {
+      console.log(response)
+      return response
+    })
+}
+
+export const patchStay = (trip_id, stay_id, patchedStay) => {
+  return axios
+    .patch(`https://tripappbe.onrender.com/trips/${trip_id}/stay/${stay_id}`, patchedStay)
+    .then((response) => {
+      console.log(response)
+      return response
+    })
+}
+
+export const patchActivity = (trip_id, activity_id, patchedActivity) => {
+  return axios
+    .patch(`https://tripappbe.onrender.com/trips/${trip_id}/activities/${activity_id}`, patchedActivity)
+    .then((response) => {
+      console.log(response)
+      return response
+    })
+}

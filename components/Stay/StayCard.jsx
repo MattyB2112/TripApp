@@ -1,7 +1,17 @@
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { useState } from "react";
 import { deleteStay } from "../../api";
+import StayEditor from "./StayEditor";
 
 export default function StayCard({ chosenTrip, setModifyTrip }) {
+  const [showForm, setShowForm] = useState(false);
+  const [currentlyEditing, setCurrentlyEditing] = useState("");
+
+  function showEditForm(stay_id) {
+    setShowForm(true);
+    setCurrentlyEditing(stay_id);
+  }
+
   function handleStayDelete(trip_id, stay_id) {
     deleteStay(trip_id, stay_id).then((response) => {
       setModifyTrip(true);
@@ -15,10 +25,14 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
           <View key={stayItem._id} style={styles.item}>
             <Text>Start date: {stayItem.startdate}</Text>
             <Text>End time: {stayItem.enddate}</Text>
+            <Text>Name: {stayItem.name}</Text>
             <Text>Type: {stayItem.type}</Text>
             <Text>Info : {stayItem.info}</Text>
             <View style={styles.buttonContainer}>
-              <Pressable style={styles.button}>
+              <Pressable
+                style={styles.button}
+                onPress={() => showEditForm(stayItem._id)}
+              >
                 <Text>Edit</Text>
               </Pressable>
               <Pressable
@@ -28,6 +42,14 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
                 <Text>Delete</Text>
               </Pressable>
             </View>
+            {showForm && currentlyEditing === stayItem._id ? (
+              <StayEditor
+                chosenTrip={chosenTrip}
+                setModifyTrip={setModifyTrip}
+                setShowForm={setShowForm}
+                stay_id={stayItem._id}
+              />
+            ) : null}
           </View>
         );
       })}
