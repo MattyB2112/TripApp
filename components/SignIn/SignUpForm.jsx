@@ -5,18 +5,18 @@ import { View, TextInput } from "react-native";
 import { postUser } from "../../api";
 import { Button } from "react-native-web";
 
-export default function SignUpForm({navigation}) {
+export default function SignUpForm({ navigation }) {
   const { signedInUser, setSignedInUser } = useContext(UserContext);
 
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = useCallback(
     (formData) => {
       try {
-        postUser(formData)
-          .then((response) => {
-           setSignedInUser(response);
-           navigation.navigate("My Trips");
-          })
+        postUser(formData).then((response) => {
+          const newUser = response.newUser;
+          setSignedInUser(newUser);
+          navigation.navigate("My Trips");
+        });
       } catch (error) {
         console.error(error);
       }

@@ -4,12 +4,12 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [signedInUser, setSignedInUser] = useState({
-    _id: "65ddcf8d42208a1f73d7e3ba",
-    username: "Justyna",
-    password: "password2",
-    email: "justyna@justyna.com",
-    isAdmin: false,
-    __v: 0,
+    // _id: "65ddcf8d42208a1f73d7e3ba",
+    // username: "Justyna",
+    // password: "password2",
+    // email: "justyna@justyna.com",
+    // isAdmin: false,
+    // __v: 0,
   });
 
   // "users": [
