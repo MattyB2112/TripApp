@@ -63,17 +63,17 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
       <ScrollView>
         {showForm && (
           <>
-            <Text>NAME:</Text>
+            <Text>Name:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleActivityNameInput}
             />
-            <Text>START DATE:</Text>
+            <Text>Date:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleActivityStartDateInput}
             />
-            <Text>INFO:</Text>
+            <Text>Info:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleActivityInfoInput}
@@ -83,7 +83,7 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
               style={styles.addActivityBtn}
               onPress={handleSubmitActivity}
             >
-              <Text style={styles.addActivityText}>SUBMIT ACTIVITY!</Text>
+              <Text style={styles.addActivityText}>SUBMIT ACTIVITY</Text>
             </Pressable>
           </>
         )}

@@ -81,27 +81,27 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
       <ScrollView>
         {showForm && (
           <>
-            <Text>START DATE:</Text>
+            <Text>Check-In:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleStayStartDateInput}
             />
-            <Text>END DATE:</Text>
+            <Text>Check-Out:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleStayEndDateInput}
             />
-            <Text>NAME:</Text>
+            <Text>Name:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleStayNameInput}
             />
-            <Text>TYPE:</Text>
+            <Text>Type:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleStayTypeInput}
             />
-            <Text>INFO:</Text>
+            <Text>Info:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleStayInfoInput}

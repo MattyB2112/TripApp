@@ -58,17 +58,17 @@ export default function ActivityEditor({
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <>
-          <Text>NAME:</Text>
+          <Text>Name:</Text>
           <TextInput
             style={styles.textInput}
             onChangeText={handleActivityNameInput}
           />
-          <Text>START DATE:</Text>
+          <Text>Date:</Text>
           <TextInput
             style={styles.textInput}
             onChangeText={handleActivityStartDateInput}
           />
-          <Text>INFO:</Text>
+          <Text>Info:</Text>
           <TextInput
             style={styles.textInput}
             onChangeText={handleActivityInfoInput}

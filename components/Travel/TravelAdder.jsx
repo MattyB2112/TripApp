@@ -91,32 +91,32 @@ export default function TravelAdder({ chosenTrip, setModifyTrip }) {
         {/* Travel Name Input */}
         {showForm && (
           <>
-            <Text>START DATE:</Text>
+            <Text>Departure Date:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelStartDateInput}
             />
-            <Text>LEAVE TIME:</Text>
+            <Text>Departure Time:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelLeaveTimeInput}
             />
-            <Text>ARRIVE DATE:</Text>
+            <Text>Arrival Date:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelArriveDateInput}
             />
-            <Text>ARRIVE TIME:</Text>
+            <Text>Arrival Time:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelArriveTimeInput}
             />
-            <Text>TRAVEL TYPE:</Text>
+            <Text>Type:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelTypeInput}
             />
-            <Text>INFO:</Text>
+            <Text>Info:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={handleTravelInfoInput}
