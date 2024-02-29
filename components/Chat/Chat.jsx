@@ -1,59 +1,107 @@
-import { View, TextInput, Text, StyleSheet } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  StyleSheet,
+  Button,
+  ScrollView,
+} from "react-native";
+// import theSocket from "../../socket";
 import io from "socket.io-client";
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { getMessages } from "../../api";
 
-export default class Chat extends React.Component {
-  static contextType = UserContext;
-  constructor(props) {
-    super(props);
-    this.state = { messageContent: "" };
-  }
+export default function Chat({ chosenTrip, setModifyTrip }) {
+  const [messages, setMessages] = useState([]);
+  const [messageBody, setMessageBody] = useState("");
+  const [socket, setSocket] = useState(null);
+  const { signedInUser, setSignedInUser } = useContext(UserContext);
+  const [messagesChanged, setMessagesChanged] = useState(false);
+  const theSocket = io("http://localhost:9090");
 
-  componentDidMount = () => {
-    this.socket = io("http://localhost:9090");
+  useEffect(() => {
+    getMessages(chosenTrip._id).then((data) => {
+      const theMessages = data.data.messages;
+      const tripMessages = [];
+      theMessages.map((message) => {
+        if (message.tripId === chosenTrip._id) {
+          tripMessages.push(message);
+        }
+      });
+      setMessages(tripMessages);
+      setMessagesChanged(false);
+    });
+  }, [messagesChanged]);
+
+  useEffect(() => {
+    theSocket.emit("joinTrip", chosenTrip._id);
+    theSocket.on("chatMessage", (message) => {
+      console.log("received message: ", message);
+    });
+    return () => {
+      theSocket.disconnect();
+    };
+  }, [messagesChanged]);
+
+  const sendMessage = () => {
+    if (theSocket && messageBody !== "") {
+      const messageObj = {
+        messageSender: signedInUser.username,
+        tripId: chosenTrip._id,
+        messageContent: messageBody,
+      };
+      theSocket.emit("chatMessage", messageObj);
+
+      setMessageBody("");
+      setMessagesChanged(true);
+    }
   };
 
-  submitChatMessage() {
-    this.socket.emit("chatMessage", {
-      messageSender: this.context.signedInUser.username,
-      tripId: "65ddcf8d42208a1f73d7e3bf",
-      messageContent: this.state.messageContent,
-    });
-    console.log(this.state.messageContent);
-    this.setState({ messageContent: "" });
-  }
+  return (
+    <View styles={styles.container}>
+      {messages.map((message) => {
+        return (
+          <View key={message._id}>
+            <Text>
+              {message.messageSender}
+              {" at "}
+              {message.messageDate.slice(11, 16)}
+            </Text>
+            <Text>{message.messageContent}</Text>
+          </View>
+        );
+      })}
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.chatHeading}>Chat</Text>
-        <View style={styles.textInputBox}>
-          <TextInput
-            style={{
-              height: 40,
-              borderWidth: 2,
-              backgroundColor: "white",
-              justifyContent: "center",
-              padding: 5,
-              borderRadius: 4,
-            }}
-            autoCorrect={false}
-            onSubmitEditing={() => this.submitChatMessage()}
-            value={this.state.messageContent}
-            onChangeText={(messageContent) => {
-              this.setState({ messageContent });
-            }}
-          />
-        </View>
+      <View style={styles.boxAndButton}>
+        <TextInput
+          style={{
+            height: 40,
+            borderWidth: 2,
+            backgroundColor: "white",
+            justifyContent: "center",
+            padding: 5,
+            bottom: 0,
+          }}
+          autoCorrect={false}
+          value={messageBody}
+          onChangeText={(messageBody) => {
+            setMessageBody(messageBody);
+          }}
+        />
+        <Button
+          style={{ width: 400 }}
+          title="Send"
+          onPress={() => sendMessage()}
+        />
       </View>
-    );
-  }
+    </View>
+  );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
   },
   chatHeading: {
     fontSize: 20,
@@ -67,5 +115,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingTop: 15,
     color: "#2D7638",
+  },
+  sentBy: {
+    padding: 3,
+  },
+  messageBody: {
+    backgroundColor: "white",
+    borderRadius: 4,
+    padding: 5,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "black",
+    marginBottom: 5,
+  },
+  boxAndButon: {
+    verticalAlign: "bottom",
+    marginTop: 100,
+  },
+  sentBy: {
+    padding: 3,
+  },
+  messageBody: {
+    backgroundColor: "white",
+    borderRadius: 4,
+    padding: 5,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "black",
+    marginBottom: 5,
+  },
+  boxAndButon: {
+    verticalAlign: "bottom",
+    marginTop: 100,
   },
 });

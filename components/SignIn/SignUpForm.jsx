@@ -13,7 +13,8 @@ export default function SignUpForm({ navigation }) {
     (formData) => {
       try {
         postUser(formData).then((response) => {
-          setSignedInUser(response);
+          const newUser = response.newUser;
+          setSignedInUser(newUser);
           navigation.navigate("My Trips");
         });
       } catch (error) {

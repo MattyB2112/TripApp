@@ -123,7 +123,6 @@ export const getUser = (username) => {
   return axios
     .get(`https://tripappbe.onrender.com/users/${username}`)
     .then((response) => {
-      console.log(response.data);
       return response.data;
     });
 };
@@ -159,6 +158,16 @@ export const patchActivity = (trip_id, activity_id, patchedActivity) => {
     )
     .then((response) => {
       console.log(response);
+      return response;
+    });
+};
+
+export const getMessages = () => {
+  return axios
+    .get(
+      "https://tripappbe.onrender.com/trips/65ddcf8d42208a1f73d7e3bf/messages"
+    )
+    .then((response) => {
       return response;
     });
 };

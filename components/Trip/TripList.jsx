@@ -230,6 +230,7 @@ export default function TripList({ navigation }) {
   useEffect(() => {
     getTrips().then((data) => {
       const signedInUserTrips = [];
+      console.log(data);
       console.log(signedInUser);
 
       data.forEach((trip) => {
@@ -239,11 +240,12 @@ export default function TripList({ navigation }) {
           }
         });
       });
+      console.log(signedInUserTrips);
       setTrips(signedInUserTrips);
       setIsLoading(false);
       setTripsChanged(false);
     });
-  }, [tripsChanged]);
+  }, [tripsChanged, signedInUser]);
 
   function chooseTrip(id) {
     const trip = trips.filter((trip) => {

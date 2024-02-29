@@ -14,7 +14,8 @@ export default function LoginForm({ navigation }) {
     (formData) => {
       try {
         getUser(formData.username).then((response) => {
-          setSignedInUser(response);
+          const newUser = response.user;
+          setSignedInUser(newUser);
           setLoggedIn(true);
           navigation.navigate("My Trips");
         });
