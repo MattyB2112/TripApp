@@ -16,8 +16,8 @@ export default function App() {
         <Header />
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="My Trips" component={MyTrips} />
             <Stack.Screen name="Sign in" component={SignIn} />
+            <Stack.Screen name="My Trips" component={MyTrips} />
             <Stack.Screen name="Single Trip" component={SingleTrip} />
           </Stack.Navigator>
         </NavigationContainer>
