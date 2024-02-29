@@ -13,7 +13,6 @@ export default function ActivityCard({ chosenTrip, setModifyTrip }) {
   }
 
   function handleActivityDelete(trip_id, activity_id) {
-    console.log(trip_id, activity_id);
     deleteActivity(trip_id, activity_id).then((response) => {
       setModifyTrip(true);
     });

@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   titleText: {
+    marginTop: 20,
     fontSize: 40,
     fontWeight: "bold",
     color: "#FBFAF8",

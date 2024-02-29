@@ -48,14 +48,11 @@ export const postActivity = (trip_id, newActivity) => {
 };
 
 export const postMember = (trip_id, newMember) => {
-  console.log(trip_id, "<==== trip ID");
-  console.log(newMember, "<==== new MEMBER");
   return axios
     .post(`https://tripappbe.onrender.com/trips/${trip_id}/members`, {
       userId: newMember,
     })
     .then((memberData) => {
-      console.log(memberData, "<--- MEMBER DATA");
       return memberData;
     });
 };
@@ -134,7 +131,6 @@ export const patchTravel = (trip_id, travel_id, patchedTravel) => {
       patchedTravel
     )
     .then((response) => {
-      console.log(response);
       return response;
     });
 };
@@ -146,7 +142,6 @@ export const patchStay = (trip_id, stay_id, patchedStay) => {
       patchedStay
     )
     .then((response) => {
-      console.log(response);
       return response;
     });
 };
@@ -157,7 +152,6 @@ export const patchActivity = (trip_id, activity_id, patchedActivity) => {
       patchedActivity
     )
     .then((response) => {
-      console.log(response);
       return response;
     });
 };
