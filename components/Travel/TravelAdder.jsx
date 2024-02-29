@@ -141,9 +141,13 @@ export default function TravelAdder({ chosenTrip, setModifyTrip }) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     flex: 1,
     padding: 50,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
+    // borderRadius: 5,
+    // borderColor: "#263D42",
+    // borderWidth: 2,
   },
   textInput: {
     backgroundColor: "white",
@@ -156,11 +160,11 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   addTravelBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
     padding: 10,
     marginTop: 15,
@@ -168,6 +172,6 @@ const styles = StyleSheet.create({
   addTravelText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
   },
 });

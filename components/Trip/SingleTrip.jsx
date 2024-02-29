@@ -41,54 +41,51 @@ export default function SingleTrip({ route }) {
     );
 
   return (
-      <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-        <View>
-          <TripNavBar setNavTab={setNavTab} />
-          <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
-          {navTab === "Travel" ? (
-            <TravelCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
-          ) : null}
-          {navTab === "Stay" ? (
-            <StayCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
-          ) : null}
-          {navTab === "Activities" ? (
-            <ActivityCard
-              chosenTrip={chosenTrip}
-              setModifyTrip={setModifyTrip}
-            />
-          ) : null}
-          {navTab === "Members" ? (
-            <MemberCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
-          ) : null}
-          {navTab === "Chat" ? (
-            <Chat chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
-          ) : null}
-        </View>
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+      <View>
+        <TripNavBar setNavTab={setNavTab} />
+        <TripNameHeader formatDate={formatDate} chosenTrip={chosenTrip} />
         {navTab === "Travel" ? (
-          <TravelAdder
-            chosenTrip={chosenTrip}
-            setModifyTrip={setModifyTrip}
-          ></TravelAdder>
+          <TravelCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
         {navTab === "Stay" ? (
-          <StayAdder
-            chosenTrip={chosenTrip}
-            setModifyTrip={setModifyTrip}
-          ></StayAdder>
+          <StayCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
         {navTab === "Activities" ? (
-          <ActivityAdder
-            chosenTrip={chosenTrip}
-            setModifyTrip={setModifyTrip}
-          ></ActivityAdder>
+          <ActivityCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
         {navTab === "Members" ? (
-          <MemberAdder
-            chosenTrip={chosenTrip}
-            setModifyTrip={setModifyTrip}
-          ></MemberAdder>
+          <MemberCard chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
         ) : null}
-      </ScrollView>
+        {navTab === "Chat" ? (
+          <Chat chosenTrip={chosenTrip} setModifyTrip={setModifyTrip} />
+        ) : null}
+      </View>
+      {navTab === "Travel" ? (
+        <TravelAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></TravelAdder>
+      ) : null}
+      {navTab === "Stay" ? (
+        <StayAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></StayAdder>
+      ) : null}
+      {navTab === "Activities" ? (
+        <ActivityAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></ActivityAdder>
+      ) : null}
+      {navTab === "Members" ? (
+        <MemberAdder
+          chosenTrip={chosenTrip}
+          setModifyTrip={setModifyTrip}
+        ></MemberAdder>
+      ) : null}
+    </ScrollView>
   );
 }
 
@@ -97,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 50,
     paddingTop: 10,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
   },
   // item: {
   //   padding: 20,

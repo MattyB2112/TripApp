@@ -3,9 +3,11 @@ import { Text, StyleSheet, View } from "react-native";
 export default function TripNameHeader({ formatDate, chosenTrip }) {
   return (
     <View style={styles.TripNameContainer}>
-      <View style={styles.tripName}>{chosenTrip.name}</View>
+      <Text style={styles.tripName}>{chosenTrip.name}</Text>
 
-      <View style={styles.tripDates}>{formatDate(chosenTrip.startdate)} - {formatDate(chosenTrip.enddate)}</View>
+      <Text style={styles.tripDates}>
+        {formatDate(chosenTrip.startdate)} - {formatDate(chosenTrip.enddate)}
+      </Text>
     </View>
   );
 }
@@ -17,18 +19,18 @@ const styles = StyleSheet.create({
   },
   tripName: {
     alignItems: "center",
-    color: "black",
-    fontSize: 40,
+    color: "#263D42",
+    fontSize: 30,
     fontWeight: "bold",
     paddingTop: 15,
-    textShadowColor: "#B2A59B",
-    textShadowOffset: { width: 2, height: 3 },
-    textShadowRadius: 4,
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
   },
   tripDates: {
     alignItems: "center",
     fontSize: 15,
-    color: "#263D42",
+    color: "black",
     paddingTop: 10,
     paddingBottom: 20,
   },

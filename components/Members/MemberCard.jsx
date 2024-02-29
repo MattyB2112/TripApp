@@ -31,7 +31,7 @@ export default function MemberCard({ chosenTrip, setModifyTrip }) {
                     })
                   }
                 >
-                  <Text style={styles.cardText}>DELETE</Text>
+                  <Text style={styles.deleteBtnText}>DELETE</Text>
                 </Pressable>
               </View>
             ) : null}
@@ -48,22 +48,35 @@ const styles = StyleSheet.create({
     gap: 20,
   },
   item: {
-    alignContent: "center",
+    // alignContent: "center",
+    // padding: 20,
+    // fontSize: 15,
+    // marginTop: 0,
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    // borderRadius: 5,
+    // backgroundColor: "#5D8233",
+    flex: 1,
+    flexDirection: "row",
     padding: 20,
     fontSize: 15,
     marginTop: 0,
-    borderColor: "#423219",
+    borderColor: "#263D42",
     borderWidth: 2,
     borderRadius: 5,
-    backgroundColor: "#5D8233",
+    backgroundColor: "#FBFAF8",
   },
   tabHeader: {
     fontSize: 20,
     fontWeight: "bold",
     paddingTop: 15,
-    textShadowColor: "#B2A59B",
-    textShadowOffset: { width: 2, height: 3 },
-    textShadowRadius: 4,
+    color: "#2D7638",
+    // fontSize: 20,
+    // fontWeight: "bold",
+    // paddingTop: 15,
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
@@ -71,13 +84,29 @@ const styles = StyleSheet.create({
     gap: 30,
     flexDirection: "row",
     justifyContent: "flex-end",
+    alignSelf: "flex-end",
   },
   button: {
-    borderColor: "#423219",
-    borderWidth: 2,
     borderRadius: 5,
     padding: 5,
-    backgroundColor: "#423219",
+    backgroundColor: "#263D42",
+    alignSelf: "flex-start",
+    // borderRadius: 5,
+    // padding: 5,
+    // backgroundColor: "#9A7AA0",
+    // alignSelf: "flex-start",
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    // borderRadius: 5,
+    // padding: 5,
+    // backgroundColor: "#423219",
+  },
+  deleteBtnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "#FBFAF8",
+    lineHeight: 15,
   },
   cardText: {
     fontFamily: "arial",

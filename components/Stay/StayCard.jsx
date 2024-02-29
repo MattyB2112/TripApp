@@ -24,21 +24,24 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
         return (
           <View key={stayItem._id} style={styles.item}>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Check-In: </View>
+              <Text style={styles.cardTitle}>Check-In: </Text>
               {stayItem.startdate}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Check-Out: </View>
+              <Text style={styles.cardTitle}>Check-Out: </Text>
               {stayItem.enddate}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Name: </View> {stayItem.name}
+              <Text style={styles.cardTitle}>Name: </Text>
+              {stayItem.name}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Type: </View> {stayItem.type}
+              <Text style={styles.cardTitle}>Type: </Text>
+              {stayItem.type}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Info: </View> {stayItem.info}
+              <Text style={styles.cardTitle}>Info: </Text>
+              {stayItem.info}
             </Text>
             <View style={styles.buttonContainer}>
               <Pressable
@@ -48,10 +51,10 @@ export default function StayCard({ chosenTrip, setModifyTrip }) {
                 <Text style={styles.btnText}>EDIT</Text>
               </Pressable>
               <Pressable
-                style={styles.button}
+                style={styles.deleteBtn}
                 onPress={() => handleStayDelete(chosenTrip._id, stayItem._id)}
               >
-                <Text style={styles.btnText}>DELETE</Text>
+                <Text style={styles.deleteBtnText}>DELETE</Text>
               </Pressable>
             </View>
             {showForm && currentlyEditing === stayItem._id ? (
@@ -78,49 +81,67 @@ const styles = StyleSheet.create({
     padding: 20,
     fontSize: 15,
     marginTop: 0,
-    borderColor: "#423219",
+    borderColor: "#263D42",
     borderWidth: 2,
     borderRadius: 5,
-    backgroundColor: "#5D8233",
+    backgroundColor: "#FBFAF8",
   },
   tabHeader: {
     fontSize: 20,
     fontWeight: "bold",
     paddingTop: 15,
-    textShadowColor: "#B2A59B",
-    textShadowOffset: { width: 2, height: 3 },
-    textShadowRadius: 4,
+    color: "#2D7638",
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
-    flex: 1,
+    flex: 0.1,
     gap: 30,
     flexDirection: "row",
     justifyContent: "flex-end",
   },
   button: {
-    borderColor: "#423219",
-    borderWidth: 2,
+    // borderColor: "#423219",
+    // borderWidth: 2,
     borderRadius: 5,
     padding: 5,
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
+    alignSelf: "flex-start",
+  },
+  deleteBtn: {
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: "#263D42",
+    alignSelf: "flex-start",
+  },
+  deleteBtnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "#FBFAF8",
+    lineHeight: 15,
   },
   btnText: {
     fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
-    color: "black",
+    color: "#FBFAF8",
     lineHeight: 15,
   },
   cardText: {
     fontFamily: "arial",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     fontSize: 15,
-    color: "#263D42",
+    color: "black",
     lineHeight: 20,
   },
   cardTitle: {
     fontSize: 15,
-    color: "black",
+    fontWeight: "bold",
+    color: "#263D42",
   },
 });

@@ -23,27 +23,28 @@ export default function TravelCard({ chosenTrip, setModifyTrip }) {
         return (
           <View key={travelItem._id} style={styles.item}>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Departure Date: </View>
+              <Text style={styles.cardTitle}>Departure Date: </Text>
               {travelItem.startdate}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Departure Time: </View>
+              <Text style={styles.cardTitle}>Departure Time: </Text>
               {travelItem.leavetime}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Arrival Date: </View>
+              <Text style={styles.cardTitle}>Arrival Date: </Text>
               {travelItem.arrivedate}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Arrival Time:</View>
+              <Text style={styles.cardTitle}>Arrival Time: </Text>
               {travelItem.arrivetime}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Type: </View>
+              <Text style={styles.cardTitle}>Type: </Text>
               {travelItem.type}
             </Text>
             <Text style={styles.cardText}>
-              <View style={styles.cardTitle}>Info: </View> {travelItem.info}
+              <Text style={styles.cardTitle}>Info: </Text>
+              {travelItem.info}
             </Text>
             <View style={styles.buttonContainer}>
               <Pressable
@@ -53,12 +54,12 @@ export default function TravelCard({ chosenTrip, setModifyTrip }) {
                 <Text style={styles.btnText}>EDIT</Text>
               </Pressable>
               <Pressable
-                style={styles.button}
+                style={styles.deleteBtn}
                 onPress={() => {
                   handleTravelDelete(chosenTrip._id, travelItem._id);
                 }}
               >
-                <Text style={styles.btnText}>DELETE</Text>
+                <Text style={styles.deleteBtnText}>DELETE</Text>
               </Pressable>
             </View>
             {showForm && currentlyEditing === travelItem._id ? (
@@ -85,49 +86,67 @@ const styles = StyleSheet.create({
     padding: 20,
     fontSize: 15,
     marginTop: 0,
-    borderColor: "#423219",
+    borderColor: "#263D42",
     borderWidth: 2,
     borderRadius: 5,
-    backgroundColor: "#5D8233",
+    backgroundColor: "#FBFAF8",
   },
   tabHeader: {
     fontSize: 20,
     fontWeight: "bold",
     paddingTop: 15,
-    textShadowColor: "#B2A59B",
-    textShadowOffset: { width: 2, height: 3 },
-    textShadowRadius: 4,
+    color: "#2D7638",
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
-    flex: 1,
+    flex: 0.1,
     gap: 30,
     flexDirection: "row",
     justifyContent: "flex-end",
   },
   button: {
-    borderColor: "#423219",
-    borderWidth: 2,
+    // borderColor: "#423219",
+    // borderWidth: 2,
     borderRadius: 5,
     padding: 5,
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
+    alignSelf: "flex-start",
+  },
+  deleteBtn: {
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: "#263D42",
+    alignSelf: "flex-start",
+  },
+  deleteBtnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "#FBFAF8",
+    lineHeight: 15,
   },
   btnText: {
     fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
-    color: "black",
+    color: "#FBFAF8",
     lineHeight: 15,
   },
   cardText: {
     fontFamily: "arial",
-    fontWeight: "bold",
+    // fontWeight: "bold",
     fontSize: 15,
-    color: "#263D42",
+    color: "black",
     lineHeight: 20,
   },
   cardTitle: {
     fontSize: 15,
-     color: "black",
+    fontWeight: "bold",
+    color: "#263D42",
   },
 });
