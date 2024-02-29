@@ -60,18 +60,36 @@ export default function Chat({ chosenTrip, setModifyTrip }) {
 
   return (
     <View styles={styles.container}>
-      {messages.map((message) => {
-        return (
-          <View key={message._id}>
-            <Text>
-              {message.messageSender}
-              {" at "}
-              {message.messageDate.slice(11, 16)}
-            </Text>
-            <Text>{message.messageContent}</Text>
-          </View>
-        );
-      })}
+      <View>
+        <ScrollView>
+          {messages.map((message) => {
+            return (
+              <View key={message._id}>
+                {message.messageSender === signedInUser.username ? (
+                  <Text style={styles.sentBySignedIn}>
+                    {message.messageSender}
+                    {" at "}
+                    {message.messageDate.slice(11, 16)}
+                  </Text>
+                ) : (
+                  <Text style={styles.sentBy}>
+                    {message.messageSender}
+                    {" at "}
+                    {message.messageDate.slice(11, 16)}
+                  </Text>
+                )}
+                {message.messageSender === signedInUser.username ? (
+                  <Text style={styles.signedIn}>{message.messageContent}</Text>
+                ) : (
+                  <Text style={styles.messageBody}>
+                    {message.messageContent}
+                  </Text>
+                )}
+              </View>
+            );
+          })}
+        </ScrollView>
+      </View>
 
       <View style={styles.boxAndButton}>
         <TextInput
@@ -116,6 +134,36 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     color: "#2D7638",
   },
+  sentBySignedIn: {
+    textAlign: "right",
+  },
+  sentBy: {
+    padding: 3,
+    textAlign: "right",
+  },
+  signedIn: {
+    backgroundColor: "#9A7AA0",
+    borderRadius: 4,
+    padding: 5,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "black",
+    marginBottom: 5,
+    textAlign: "right",
+    borderRadius: 5,
+    color: "white",
+  },
+  messageBody: {
+    backgroundColor: "white",
+    borderRadius: 4,
+    padding: 5,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "black",
+    marginBottom: 5,
+    borderRadius: 5,
+  },
+  boxAndButon: {},
   sentBy: {
     padding: 3,
   },
@@ -128,24 +176,8 @@ const styles = StyleSheet.create({
     borderColor: "black",
     marginBottom: 5,
   },
-  boxAndButon: {
-    verticalAlign: "bottom",
-    marginTop: 100,
-  },
-  sentBy: {
-    padding: 3,
-  },
-  messageBody: {
-    backgroundColor: "white",
-    borderRadius: 4,
-    padding: 5,
-    fontSize: 15,
-    borderWidth: 1,
-    borderColor: "black",
-    marginBottom: 5,
-  },
-  boxAndButon: {
-    verticalAlign: "bottom",
-    marginTop: 100,
-  },
+  // boxAndButon: {
+  //   verticalAlign: "bottom",
+  //   marginTop: 100,
+  // },
 });

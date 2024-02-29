@@ -142,6 +142,12 @@ export default function TripAdder({ setShowForm, setTripsChanged }) {
             <Text style={styles.createTripText}>CREATE TRIP!</Text>
           </Pressable>
         ) : null}
+        <Pressable
+          style={styles.cancelTripBtn}
+          onPress={() => setShowForm(false)}
+        >
+          <Text style={styles.createTripText}>CANCEL</Text>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );
@@ -183,6 +189,18 @@ const styles = StyleSheet.create({
   },
   createTripBtn: {
     backgroundColor: "#9A7AA0",
+    alignSelf: "center",
+    alignItems: "center",
+    // width: "30%",
+    width: "100%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
+    borderRadius: 5,
+    paddingVertical: 10,
+    marginVertical: 5,
+  },
+  cancelTripBtn: {
+    backgroundColor: "#263D42",
     alignSelf: "center",
     alignItems: "center",
     // width: "30%",

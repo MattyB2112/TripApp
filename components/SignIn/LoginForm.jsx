@@ -28,11 +28,9 @@ export default function LoginForm({ navigation }) {
     },
     [register]
   );
-  console.log(signedInUser);
   const onChangeField = useCallback(
     (name) => (text) => {
       setValue(name, text);
-      console.log(name, text);
     },
     []
   );

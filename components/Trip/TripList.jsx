@@ -230,8 +230,6 @@ export default function TripList({ navigation }) {
   useEffect(() => {
     getTrips().then((data) => {
       const signedInUserTrips = [];
-      console.log(data);
-      console.log(signedInUser);
 
       data.forEach((trip) => {
         trip.members.forEach((member) => {
@@ -240,7 +238,7 @@ export default function TripList({ navigation }) {
           }
         });
       });
-      console.log(signedInUserTrips);
+
       setTrips(signedInUserTrips);
       setIsLoading(false);
       setTripsChanged(false);
@@ -295,6 +293,12 @@ export default function TripList({ navigation }) {
             />
           ) : null}
         </View>
+        {trips.length === 0 ? (
+          <Text style={styles.noTripsText}>
+            You are not a member of any trips yet! Click "Add Trip" above to
+            join one
+          </Text>
+        ) : null}
         {trips.map((trip) => {
           return (
             <View key={trip._id} style={styles.tripItemContainer}>
@@ -363,6 +367,10 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: "center",
     alignItems: "center",
+  },
+  noTripsText: {
+    textAlign: "center",
+    fontSize: 15,
   },
   item: {
     padding: 15,
