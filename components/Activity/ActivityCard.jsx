@@ -20,27 +20,36 @@ export default function ActivityCard({ chosenTrip, setModifyTrip }) {
   }
   return (
     <View style={styles.container}>
-      <Text>Activities</Text>
+      <Text style={styles.tabHeader}>Activities</Text>
       {chosenTrip.activities.map((activityItem) => {
         return (
           <View key={activityItem._id} style={styles.item}>
-            <Text>Name: {activityItem.name}</Text>
-            <Text>Start date: {activityItem.startdate}</Text>
-            <Text>Info: {activityItem.info}</Text>
+            <Text style={styles.cardText}>
+              <Text style={styles.cardTitle}>Name: </Text>
+              {activityItem.name}
+            </Text>
+            <Text style={styles.cardText}>
+              <Text style={styles.cardTitle}>Date: </Text>
+              {activityItem.startdate}
+            </Text>
+            <Text style={styles.cardText}>
+              <Text style={styles.cardTitle}>Info: </Text>
+              {activityItem.info}
+            </Text>
             <View style={styles.buttonContainer}>
               <Pressable
                 style={styles.button}
                 onPress={() => showEditForm(activityItem._id)}
               >
-                <Text>Edit</Text>
+                <Text style={styles.btnText}>EDIT</Text>
               </Pressable>
               <Pressable
-                style={styles.button}
+                style={styles.deleteBtn}
                 onPress={() =>
                   handleActivityDelete(chosenTrip._id, activityItem._id)
                 }
               >
-                <Text>Delete</Text>
+                <Text style={styles.deleteBtnText}>DELETE</Text>
               </Pressable>
             </View>
             {showForm && currentlyEditing === activityItem._id ? (
@@ -66,22 +75,69 @@ const styles = StyleSheet.create({
   item: {
     padding: 20,
     fontSize: 15,
-    marginTop: 5,
-    borderColor: "#423219",
+    marginTop: 0,
+    borderColor: "#263D42",
     borderWidth: 2,
     borderRadius: 5,
+    backgroundColor: "#FBFAF8",
+  },
+  tabHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 15,
+    color: "#2D7638",
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
   },
   buttonContainer: {
     marginTop: 5,
-    flex: 1,
+    flex: 0.1,
     gap: 30,
     flexDirection: "row",
     justifyContent: "flex-end",
+    marginBottom: 10,
   },
   button: {
-    borderColor: "#423219",
-    borderWidth: 2,
+    // borderColor: "#423219",
+    // borderWidth: 2,
     borderRadius: 5,
     padding: 5,
+    backgroundColor: "#9A7AA0",
+    alignSelf: "flex-start",
+  },
+  deleteBtn: {
+    // borderColor: "#423219",
+    // borderWidth: 2,
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: "#263D42",
+    alignSelf: "flex-start",
+  },
+  deleteBtnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "#FBFAF8",
+    lineHeight: 15,
+  },
+  btnText: {
+    fontFamily: "arial",
+    fontWeight: "bold",
+    fontSize: 13,
+    color: "#FBFAF8",
+    lineHeight: 15,
+  },
+  cardText: {
+    fontFamily: "arial",
+    // fontWeight: "bold",
+    fontSize: 15,
+    color: "black",
+    lineHeight: 20,
+  },
+  cardTitle: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#263D42",
   },
 });

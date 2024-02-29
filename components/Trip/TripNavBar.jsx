@@ -8,7 +8,8 @@ export default function TripNavBar({ setNavTab }) {
     <View style={styles.container}>
       <Pressable onPress={() => handleTabSwitching("Travel")}>
         <Text style={styles.navBarOption}>
-          Travel ✈️
+          Travel
+          {/* ✈️ */}
           {/* <Image
             style={{
               alignContent: "center",
@@ -23,7 +24,8 @@ export default function TripNavBar({ setNavTab }) {
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Stay")}>
         <Text style={styles.navBarOption}>
-          Stay 🛌
+          Stay
+          {/* 🛌 */}
           {/* <Image
             style={{
               alignContent: "center",
@@ -38,7 +40,8 @@ export default function TripNavBar({ setNavTab }) {
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Activities")}>
         <Text style={styles.navBarOption}>
-          Activities 🍴
+          Activities
+          {/* 🍴 */}
           {/* <Image
             style={{
               alignContent: "center",
@@ -53,7 +56,8 @@ export default function TripNavBar({ setNavTab }) {
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Members")}>
         <Text style={styles.navBarOption}>
-          Members 👫
+          Members
+          {/* 👫 */}
           {/* <Image
             style={{
               alignContent: "center",
@@ -68,7 +72,8 @@ export default function TripNavBar({ setNavTab }) {
       </Pressable>
       <Pressable onPress={() => handleTabSwitching("Chat")}>
         <Text style={styles.navBarOption}>
-          Chat 💬
+          Chat
+          {/* 💬 */}
           {/* <Image
             style={{
               alignContent: "center",
@@ -87,22 +92,32 @@ export default function TripNavBar({ setNavTab }) {
 
 const styles = StyleSheet.create({
   container: {
+    // flex: 0.1,
+    height: 50,
     display: "flex",
+    // flex: 0.05,
     flexDirection: "row",
     justifyContent: "center",
-    backgroundColor: "#D7CCB2",
+    // backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
     gap: 10,
     padding: 5,
     marginTop: 1,
+    // marginBottom: -10,
+    flexShrink: 1,
+    // flexWrap: "wrap",
   },
   navBarOption: {
-    display: "flex",
-    flexDirection: "row",
+    // display: "flex",
+    // flexDirection: "row",
     fontSize: 16,
-    borderColor: "black",
-    borderWidth: 1,
+    // borderColor: "#FBFAF8",
+    // borderWidth: 2,
     padding: 5,
-    backgroundColor: "green",
+    backgroundColor: "#2D7638",
     alignContent: "center",
+    color: "#FBFAF8",
+    fontWeight: "bold",
+    borderRadius: 5,
   },
 });

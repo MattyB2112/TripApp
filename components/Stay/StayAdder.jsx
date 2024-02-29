@@ -108,14 +108,14 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
             />
 
             <Pressable style={styles.addStayBtn} onPress={handleSubmitStay}>
-              <Text style={styles.addStayText}>SUBMIT STAY!</Text>
+              <Text style={styles.addStayText}>SUBMIT STAY</Text>
             </Pressable>
           </>
         )}
 
         {showAddBtn && (
           <Pressable style={styles.addStayBtn} onPress={handleAddBtn}>
-            <Text style={styles.addStayText}>ADD STAY!</Text>
+            <Text style={styles.addStayText}>ADD STAY</Text>
           </Pressable>
         )}
       </ScrollView>
@@ -125,9 +125,10 @@ export default function StayAdder({ chosenTrip, setModifyTrip }) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     flex: 1,
     padding: 50,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
   },
   textInput: {
     backgroundColor: "white",
@@ -140,19 +141,18 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   addStayBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
+    padding: 10,
+    marginTop: 15,
   },
   addStayText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
   },
 });

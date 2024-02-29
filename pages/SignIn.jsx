@@ -4,7 +4,6 @@ import LoginForm from "../components/SignIn/LoginForm";
 import SignUpForm from "../components/SignIn/SignUpForm";
 
 export default function SignIn({ navigation }) {
-
   const [login, setLogin] = useState(false);
   const [signUp, setSignUp] = useState(false);
 
@@ -29,10 +28,10 @@ export default function SignIn({ navigation }) {
       ) : (
         <View>
           <Pressable style={styles.btn} onPress={handleLogin}>
-            <Text>LOGIN</Text>
+            <Text style={styles.btnText}>LOGIN</Text>
           </Pressable>
           <Pressable style={styles.btn} onPress={handleSignUp}>
-            <Text>SIGN UP</Text>
+            <Text style={styles.btnText}>SIGN UP</Text>
           </Pressable>
         </View>
       )}
@@ -42,17 +41,21 @@ export default function SignIn({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
     flex: 1,
   },
   btn: {
     alignSelf: "center",
     alignItems: "center",
     width: "20%",
-    borderColor: "#423219",
-    borderWidth: 2,
+    backgroundColor: "#9A7AA0",
+    // borderColor: "#423219",
+    // borderWidth: 2,
     borderRadius: 5,
     paddingVertical: 10,
     marginVertical: 5,
+  },
+  btnText: {
+    color: "#FBFAF8",
   },
 });

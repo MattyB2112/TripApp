@@ -14,15 +14,16 @@ export default function MyTrips({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
     flex: 1,
   },
   signIn: {
-    color: "black",
+    color: "#263D42",
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    borderColor: "#096502",
+    borderColor: "#263D42",
+    backgroundColor: "#FBFAF8",
     marginLeft: 130,
     marginRight: 130,
     padding: 5,

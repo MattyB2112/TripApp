@@ -87,8 +87,10 @@ export default function TripAdder({ setShowForm, setTripsChanged }) {
         />
 
         {/* Start Date Picker */}
-        <Pressable onPress={handleFromPress}>
-          <Text>FROM: {startDate ? formatDate(startDate) : ""}</Text>
+        <Pressable onPress={handleFromPress} style={styles.setDateBtn}>
+          <Text style={styles.setDateText}>
+            FROM: {startDate ? formatDate(startDate) : ""}
+          </Text>
         </Pressable>
 
         {startPicker && (
@@ -108,8 +110,10 @@ export default function TripAdder({ setShowForm, setTripsChanged }) {
           </View>
         )}
         {/* End Date Picker */}
-        <Pressable onPress={handleToPress}>
-          <Text>TO: {endDate ? formatDate(endDate) : ""}</Text>
+        <Pressable onPress={handleToPress} style={styles.setDateBtn}>
+          <Text style={styles.setDateText}>
+            TO: {endDate ? formatDate(endDate) : ""}
+          </Text>
         </Pressable>
 
         {endPicker && (
@@ -145,9 +149,10 @@ export default function TripAdder({ setShowForm, setTripsChanged }) {
 
 const styles = StyleSheet.create({
   container: {
+    // width: "100%",
     flex: 1,
     padding: 50,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
   },
   textInput: {
     backgroundColor: "white",
@@ -156,30 +161,34 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     padding: 5,
-    width: "80%",
+    width: "100%",
     alignSelf: "center",
   },
   setDateBtn: {
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#423219",
-    borderWidth: 2,
+    width: "100%",
+    // borderColor: "#423219",
+    // borderWidth: 2,
     borderRadius: 5,
     paddingVertical: 10,
     marginVertical: 5,
+    backgroundColor: "#9A7AA0",
   },
   setDateText: {
     fontWeight: "bold",
-    fontSize: 10,
+    fontSize: 15,
+    // backgroundColor: "#9A7AA0",
+    color: "#FBFAF8",
   },
   createTripBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // width: "30%",
+    width: "100%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
     paddingVertical: 10,
     marginVertical: 5,
@@ -187,6 +196,6 @@ const styles = StyleSheet.create({
   createTripText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
   },
 });

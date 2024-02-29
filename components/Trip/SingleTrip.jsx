@@ -94,24 +94,24 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 50,
     paddingTop: 10,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
   },
-  item: {
-    padding: 20,
-    fontSize: 15,
-    marginTop: 5,
-    borderColor: "#423219",
-    borderWidth: 2,
-    borderRadius: 5,
-  },
-  text: {
-    color: "black",
-    textAlign: "center",
-    fontSize: 40,
-  },
-  titleText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "black",
-  },
+  // item: {
+  //   padding: 20,
+  //   fontSize: 15,
+  //   marginTop: 5,
+  //   borderColor: "#423219",
+  //   borderWidth: 2,
+  //   borderRadius: 5,
+  // },
+  // text: {
+  //   color: "black",
+  //   textAlign: "center",
+  //   fontSize: 40,
+  // },
+  // titleText: {
+  //   fontSize: 20,
+  //   fontWeight: "bold",
+  //   color: "black",
+  // },
 });
