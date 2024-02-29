@@ -105,7 +105,32 @@ const styles = StyleSheet.create({
   },
   chatHeading: {
     fontSize: 20,
-    textAlign: "center",
+    fontWeight: "bold",
+    paddingTop: 15,
+    paddingBottom: 15,
+    // textShadowColor: "#B2A59B",
+    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowRadius: 4,
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingTop: 15,
+    color: "#2D7638",
+  },
+  sentBy: {
+    padding: 3,
+  },
+  messageBody: {
+    backgroundColor: "white",
+    borderRadius: 4,
+    padding: 5,
+    fontSize: 15,
+    borderWidth: 1,
+    borderColor: "black",
+    marginBottom: 5,
+  },
+  boxAndButon: {
+    verticalAlign: "bottom",
+    marginTop: 100,
   },
   sentBy: {
     padding: 3,

@@ -83,14 +83,14 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
               style={styles.addActivityBtn}
               onPress={handleSubmitActivity}
             >
-              <Text style={styles.addActivityText}>SUBMIT STAY!</Text>
+              <Text style={styles.addActivityText}>SUBMIT ACTIVITY!</Text>
             </Pressable>
           </>
         )}
 
         {showAddBtn && (
           <Pressable style={styles.addActivityBtn} onPress={handleAddBtn}>
-            <Text style={styles.addActivityText}>ADD STAY!</Text>
+            <Text style={styles.addActivityText}>ADD ACTIVITY</Text>
           </Pressable>
         )}
       </ScrollView>
@@ -100,9 +100,10 @@ export default function ActivityAdder({ chosenTrip, setModifyTrip }) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 10,
     flex: 1,
     padding: 50,
-    backgroundColor: "#D7CCB2",
+    backgroundColor: "#F8F1FF",
   },
   textInput: {
     backgroundColor: "white",
@@ -115,19 +116,26 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   addActivityBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
-    marginVertical: 5,
+    padding: 10,
+    marginTop: 15,
+    // backgroundColor: "#423219",
+    // alignSelf: "center",
+    // alignItems: "center",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
+    // borderRadius: 5,
+    // padding: 10,
+    // marginTop: 15,
   },
   addActivityText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
   },
 });

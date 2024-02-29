@@ -105,15 +105,15 @@ export default function StayEditor({
           />
           <View style={styles.formBtnContainer}>
             <Pressable style={styles.addStayBtn} onPress={handleSubmitStay}>
-              <Text style={styles.addStayText}>Confirm</Text>
+              <Text style={styles.addStayText}>CONFIRM</Text>
             </Pressable>
 
             {/*Cancel form button */}
             <Pressable
-              style={styles.addStayBtn}
+              style={styles.cancelStayBtn}
               onPress={() => setShowForm(false)}
             >
-              <Text style={styles.addStayText}>Cancel</Text>
+              <Text style={styles.cancelStayText}>CANCEL</Text>
             </Pressable>
           </View>
         </>
@@ -126,8 +126,8 @@ export default function StayEditor({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 50,
-    backgroundColor: "#D7CCB2",
+    // padding: 50,
+    backgroundColor: "#FBFAF8",
   },
   textInput: {
     backgroundColor: "white",
@@ -140,20 +140,38 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   addStayBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // width: "30%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
+    // paddingVertical: 10,
     marginVertical: 5,
+    padding: 5,
   },
   addStayText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
+  },
+  cancelStayBtn: {
+    backgroundColor: "#263D42",
+    alignSelf: "center",
+    alignItems: "center",
+    // width: "30%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
+    borderRadius: 5,
+    // paddingVertical: 10,
+    marginVertical: 5,
+    padding: 5,
+  },
+  cancelStayText: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#FBFAF8",
   },
   formBtnContainer: {
     flex: 1,

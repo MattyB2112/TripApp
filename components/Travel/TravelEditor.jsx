@@ -119,14 +119,14 @@ export default function TravelEditor({
           <View style={styles.formBtnContainer}>
             {/* Add Travel Button */}
             <Pressable style={styles.addTravelBtn} onPress={handleSubmitTravel}>
-              <Text style={styles.addTravelText}>Confirm</Text>
+              <Text style={styles.addTravelText}>CONFIRM</Text>
             </Pressable>
             {/*Cancel form button */}
             <Pressable
-              style={styles.addTravelBtn}
+              style={styles.cancelTravelBtn}
               onPress={() => setShowForm(false)}
             >
-              <Text style={styles.addTravelText}>Cancel</Text>
+              <Text style={styles.cancelTravelText}>CANCEL</Text>
             </Pressable>
           </View>
         </>
@@ -138,8 +138,8 @@ export default function TravelEditor({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 50,
-    backgroundColor: "#D7CCB2",
+    // padding: 50,
+    backgroundColor: "#FBFAF8",
   },
   textInput: {
     backgroundColor: "white",
@@ -152,20 +152,38 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   addTravelBtn: {
-    backgroundColor: "#423219",
+    backgroundColor: "#9A7AA0",
     alignSelf: "center",
     alignItems: "center",
-    width: "30%",
-    borderColor: "#291E0E",
-    borderWidth: 3,
+    // width: "30%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
     borderRadius: 5,
-    paddingVertical: 10,
+    // paddingVertical: 10,
     marginVertical: 5,
+    padding: 5,
   },
   addTravelText: {
     fontWeight: "bold",
     fontSize: 15,
-    color: "#096502",
+    color: "#FBFAF8",
+  },
+  cancelTravelBtn: {
+    backgroundColor: "#263D42",
+    alignSelf: "center",
+    alignItems: "center",
+    // width: "30%",
+    // borderColor: "#291E0E",
+    // borderWidth: 3,
+    borderRadius: 5,
+    // paddingVertical: 10,
+    marginVertical: 5,
+    padding: 5,
+  },
+  cancelTravelText: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#FBFAF8",
   },
   formBtnContainer: {
     flex: 1,
