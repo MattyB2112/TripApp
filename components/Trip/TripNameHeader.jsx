@@ -4,7 +4,6 @@ export default function TripNameHeader({ formatDate, chosenTrip }) {
   return (
     <View style={styles.TripNameContainer}>
       <Text style={styles.tripName}>{chosenTrip.name}</Text>
-
       <Text style={styles.tripDates}>
         {formatDate(chosenTrip.startdate)} - {formatDate(chosenTrip.enddate)}
       </Text>

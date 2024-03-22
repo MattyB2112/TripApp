@@ -92,9 +92,9 @@ export default function TripNavBar({ setNavTab }) {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 0.1,
     height: 50,
-    display: "flex",
+    // display: "flex",
+    flex: 0.1,
     // flex: 0.05,
     flexDirection: "row",
     justifyContent: "center",
@@ -103,19 +103,13 @@ const styles = StyleSheet.create({
     gap: 10,
     padding: 5,
     marginTop: 1,
-    // marginBottom: -10,
-    flexShrink: 1,
-    // flexWrap: "wrap",
+    // flexShrink: 1,
+
   },
   navBarOption: {
-    // display: "flex",
-    // flexDirection: "row",
     fontSize: 16,
-    // borderColor: "#FBFAF8",
-    // borderWidth: 2,
-    padding: 5,
+    padding: 3,
     backgroundColor: "#2D7638",
-    alignContent: "center",
     color: "#FBFAF8",
     fontWeight: "bold",
     borderRadius: 5,

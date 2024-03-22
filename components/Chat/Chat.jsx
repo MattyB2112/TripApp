@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     borderRadius: 5,
   },
-  boxAndButon: {},
+  boxAndButon: {
+  },
   sentBy: {
     padding: 3,
   },

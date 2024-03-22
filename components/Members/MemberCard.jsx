@@ -21,7 +21,7 @@ export default function MemberCard({ chosenTrip, setModifyTrip }) {
           <View key={memberItem.username} style={styles.item}>
             <Text style={styles.cardText}>{memberItem.username}</Text>
             {signedInUser.username === chosenTrip.admin &&
-            chosenTrip.admin !== memberItem.username ? (
+              chosenTrip.admin !== memberItem.username ? (
               <View style={styles.buttonContainer}>
                 <Pressable
                   style={styles.button}
@@ -102,24 +102,21 @@ const styles = StyleSheet.create({
     // backgroundColor: "#423219",
   },
   deleteBtnText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#FBFAF8",
     lineHeight: 15,
   },
   cardText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 14,
     color: "black",
     lineHeight: 20,
   },
   admin: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 14,
     color: "black",
-    lineHeight: 5,
+    // lineHeight: 5,
   },
 });
