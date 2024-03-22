@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   container: {
     // width: "100%",
     flex: 1,
-    padding: 50,
+    // padding: 50,
     backgroundColor: "#F8F1FF",
   },
   textInput: {

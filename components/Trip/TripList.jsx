@@ -278,21 +278,21 @@ export default function TripList({ navigation }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
-        <View style={styles.container}>
-          <Pressable
-            style={(styles.item, styles.addTripBtn)}
-            onPress={() => setShowForm(true)}
-          >
-            <Text style={styles.btnText}>Add New Trip</Text>
-          </Pressable>
-          {showForm ? (
-            <TripAdder
-              setTripsChanged={setTripsChanged}
-              setShowForm={setShowForm}
-              setTrips={setTrips}
-            />
-          ) : null}
-        </View>
+        {/* <View style={styles.container}> */}
+        <Pressable
+          style={(styles.item, styles.addTripBtn)}
+          onPress={() => setShowForm(true)}
+        >
+          <Text style={styles.btnText}>Add New Trip</Text>
+        </Pressable>
+        {showForm ? (
+          <TripAdder
+            setTripsChanged={setTripsChanged}
+            setShowForm={setShowForm}
+            setTrips={setTrips}
+          />
+        ) : null}
+        {/* </View> */}
         {trips.length === 0 ? (
           <Text style={styles.noTripsText}>
             You are not a member of any trips yet! Click "Add Trip" above to
@@ -324,7 +324,7 @@ export default function TripList({ navigation }) {
                 <View
                   style={{
                     backgroundColor: "#FBFAF8",
-                    height: 200,
+                    height: 250,
                     padding: 5,
                     textAlign: "center",
                     borderRadius: 5,
@@ -419,7 +419,8 @@ const styles = StyleSheet.create({
     color: "red",
   },
   modalButtonContainer: {
-    display: "flex",
+    // display: "flex",
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
   },
@@ -427,11 +428,13 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     borderRadius: 5,
     padding: 5,
+    height: 50
   },
   confirmDelete: {
     backgroundColor: "#62C370",
     padding: 5,
     borderRadius: 5,
+    height: 50
   },
   confirmText: {
     fontSize: 25,

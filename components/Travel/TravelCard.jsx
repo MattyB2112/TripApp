@@ -73,7 +73,7 @@ export default function TravelCard({ chosenTrip, setModifyTrip }) {
           </View>
         );
       })}
-    </View>
+    </ View>
   );
 }
 
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     gap: 20,
+    // height: "100%"
+    // alignItems: "center"
   },
   item: {
     padding: 20,
@@ -90,6 +92,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     backgroundColor: "#FBFAF8",
+    // height: 200,
+    // width: "90%"
   },
   tabHeader: {
     fontSize: 20,
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     color: "#2D7638",
     // textShadowColor: "#B2A59B",
-    // textShadowOffset: { width: 2, height: 3 },
+    // textShadowOffset: {width: 2, height: 3 },
     // textShadowRadius: 4,
   },
   buttonContainer: {
@@ -114,6 +118,7 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: "#9A7AA0",
     alignSelf: "flex-start",
+    // height: 25
   },
   deleteBtn: {
     // borderColor: "#423219",
@@ -122,23 +127,21 @@ const styles = StyleSheet.create({
     padding: 5,
     backgroundColor: "#263D42",
     alignSelf: "flex-start",
+    // height: 25
   },
   deleteBtnText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#FBFAF8",
     lineHeight: 15,
   },
   btnText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#FBFAF8",
     lineHeight: 15,
   },
   cardText: {
-    fontFamily: "arial",
     // fontWeight: "bold",
     fontSize: 15,
     color: "black",

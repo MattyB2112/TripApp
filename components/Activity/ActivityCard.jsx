@@ -114,21 +114,18 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
   },
   deleteBtnText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#FBFAF8",
     lineHeight: 15,
   },
   btnText: {
-    fontFamily: "arial",
     fontWeight: "bold",
     fontSize: 13,
     color: "#FBFAF8",
     lineHeight: 15,
   },
   cardText: {
-    fontFamily: "arial",
     // fontWeight: "bold",
     fontSize: 15,
     color: "black",

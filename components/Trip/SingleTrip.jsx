@@ -30,15 +30,15 @@ export default function SingleTrip({ route }) {
       setIsLoading(false);
       setChosenTrip(data);
       setModifyTrip(false);
+      console.log(data)
     });
   }, [modifyTrip]);
 
-  if (isLoading)
-    return (
-      <View style={styles.container}>
-        <Text>Loading</Text>
-      </View>
-    );
+  if (chosenTrip === null) return (
+    <View style={styles.container}>
+      <Text>Loading</Text>
+    </View>
+  );
 
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
@@ -92,7 +92,7 @@ export default function SingleTrip({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 50,
+    padding: 30,
     paddingTop: 10,
     backgroundColor: "#F8F1FF",
   },
